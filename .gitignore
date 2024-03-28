@@ -1,0 +1,9 @@
+*.log
+*.tgz
+.DS_Store
+.temp
+.vite_opt_cache
+dist
+cache
+temp
+node_modules
