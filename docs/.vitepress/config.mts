@@ -18,6 +18,20 @@ export default defineConfig({
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' }
         ]
+      },   
+      {
+        text: 'Note',
+        items: [
+          { text: 'bootstrap', link: '/base/bootstrap_note' },
+          { text: 'Rwd', link: '/base/rwd-noted' }
+        ]
+      },
+      {
+        text: 'Vue',
+        items: [
+          { text: 'vitepress', link: '/vue/vitepress' },
+          { text: 'Rwd', link: '/base/rwd-noted' }
+        ]
       }
     ],
 
