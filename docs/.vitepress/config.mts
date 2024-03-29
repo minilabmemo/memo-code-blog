@@ -8,12 +8,14 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'F2E Note', link: '/markdown-examples' },
+      { text: 'Vue', link: '/vue/learn' }
     ],
 
-    sidebar: [
+    sidebar:
+    {'/': [
       {
-        text: 'Examples',
+        text: 'F2E Note',
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' }
@@ -26,14 +28,29 @@ export default defineConfig({
           { text: 'Rwd', link: '/base/rwd-noted' }
         ]
       },
+    ],
+    '/vue/': [
+    
+      {
+        text: 'vitepress',
+        items: [
+          { text: 'start', link: '/vue/vitepress/start' },
+          { text: 'Markdown Examples', link: '/markdown-examples' },
+          { text: 'Runtime API Examples', link: '/api-examples' }
+         
+        ]
+      },
       {
         text: 'Vue',
         items: [
-          { text: 'vitepress', link: '/vue/vitepress' },
-          { text: 'Rwd', link: '/base/rwd-noted' }
+         
+          { text: 'start', link: '/vue/learn' },
+         
         ]
       }
-    ],
+    ]
+  }
+    ,
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
