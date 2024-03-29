@@ -120,24 +120,11 @@ export default defineConfig({
 });
 ```
 
-### 多重側邊欄
+### 文章路由與多重側邊欄
 
 - 參考 [vitepress 多侧边栏](https://vitepress.dev/zh/reference/default-theme-sidebar#multiple-sidebars)
 
 如果希望根據不同路由顯示不同的側邊目錄可以這樣設定，設定完之後也記得在 nav 上增加一個鏈結。
-
-### nav 的初始頁 鏈結
-
-- 每個 link 都應指定以 / 開頭的實際檔案的路徑。如果在連結末尾添加斜杠，它將顯示相應目錄的 index.md。 （建議使用在 nav）
-- 資料夾內建立一個 `layout:doc` 的 index.md 作為初始頁，內容自行設計。
-
-```
-   nav: [
-      { text: 'Home', link: '/' },
-      { text: 'F2E Note', link: '/base/' },
-      { text: 'Vue', link: '/vue/' }
-    ],
-```
 
 ### Markdown 扩展
 
@@ -182,6 +169,44 @@ outline: deep / // [!code ++]
 - footer : 新增 footer 對象可以更改訊息資訊，默認只有不包含 sidebar 顯示，home 可見。
 - search : 新增 search 對象可以進行搜尋文章。
 
+### 導覽列 nav 的編輯
+
+顯示在右上角的導覽。
+
+#### 初始頁
+
+- 每個 link 都應指定以 / 開頭的實際檔案的路徑。如果在連結末尾添加斜杠，它將顯示相應目錄的 index.md。 （建議使用在 nav）
+- 資料夾內建立一個 `layout:doc` 的 index.md 作為初始頁，內容自行設計。
+
+```
+   nav: [
+      { text: 'Home', link: '/' },
+      { text: 'F2E Note', link: '/base/' },
+      { text: 'Vue', link: '/vue/' }
+    ],
+```
+
+#### 下拉式 Dropdown Menu
+
+```
+export default {
+  themeConfig: {
+    nav: [
+      { text: 'Guide', link: '/guide' },
+      {
+        text: 'Dropdown Menu',
+        items: [
+          { text: 'Item A', link: '/item-1' },
+          { text: 'Item B', link: '/item-2' },
+          { text: 'Item C', link: '/item-3' }
+        ]
+      }
+    ]
+  }
+}
+
+```
+
 ## TBD
 
 代辦清單！
@@ -191,3 +216,4 @@ outline: deep / // [!code ++]
 - [ ]i18n TODO
 - [ ]version TODO
 - [ ] 首頁按鈕 TODO
+- [ ]vue 組建引入 TODO

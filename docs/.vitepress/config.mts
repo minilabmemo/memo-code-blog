@@ -8,24 +8,31 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'F2E Note', link: '/base/' },
-      { text: 'Vue', link: '/vue/' }
+      { text: '整理筆記', link: '/guide/' },
+      { text: 'Vue', link: '/vue/' },
+      {
+        text: '隨手記',
+        items: [
+          { text: '草稿', link: '/draft/' },
+          { text: 'Vue', link: '/vue/' },
+        ]
+      }
     ],
 
     sidebar:
     {'/': [
       {
-        text: 'F2E Note',
+        text: 'base',
         items: [
-          { text: 'bootstrap', link: '/base/bootstrap_note' },
-          { text: 'Rwd', link: '/base/rwd-noted' }
+          { text: 'bootstrap', link: '/draft/base/bootstrap_note' },
+          { text: 'Rwd', link: '/draft/base/rwd-noted' }
         ]
       },   
       {
-        text: 'Note',
+        text: 'Test',
         items: [
-          { text: 'bootstrap', link: '/base/bootstrap_note' },
-          { text: 'Rwd', link: '/base/rwd-noted' }
+          { text: 'E2E test', link: '/draft/test/cypress' },
+         
         ]
       },
     ],
