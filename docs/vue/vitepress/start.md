@@ -1,5 +1,6 @@
 ---
 outline: deep
+description: VitePress
 ---
 
 # vitepress 筆記
@@ -74,7 +75,7 @@ $ npx vitepress init
 ```
 
 - 增加連結
-  然後在 config 中增加鏈結 , nav 會出現在右上角，sidebar 則是側邊欄。
+  - 然後在 config 中增加鏈結 , nav 會出現在右上角，sidebar 則是側邊欄。
 
 ```ts config.mts
 import { defineConfig } from "vitepress";
@@ -125,6 +126,19 @@ export default defineConfig({
 
 如果希望根據不同路由顯示不同的側邊目錄可以這樣設定，設定完之後也記得在 nav 上增加一個鏈結。
 
+### nav 的初始頁 鏈結
+
+- 每個 link 都應指定以 / 開頭的實際檔案的路徑。如果在連結末尾添加斜杠，它將顯示相應目錄的 index.md。 （建議使用在 nav）
+- 資料夾內建立一個 `layout:doc` 的 index.md 作為初始頁，內容自行設計。
+
+```
+   nav: [
+      { text: 'Home', link: '/' },
+      { text: 'F2E Note', link: '/base/' },
+      { text: 'Vue', link: '/vue/' }
+    ],
+```
+
 ### Markdown 扩展
 
 - 參考 [Markdown 扩展](https://vitepress.dev/zh/guide/markdown)
@@ -161,3 +175,19 @@ outline: deep / // [!code ++]
 ```
 
 ## 主題
+
+- 參考 [vitepress 默认主题配置](https://vitepress.dev/zh/reference/default-theme-config)
+
+- socialLinks: 可以定義你的鏈結
+- footer : 新增 footer 對象可以更改訊息資訊，默認只有不包含 sidebar 顯示，home 可見。
+- search : 新增 search 對象可以進行搜尋文章。
+
+## TBD
+
+代辦清單！
+
+- [ ]代碼折疊功能需要插件
+- [ ]文章似乎不能打 tag
+- [ ]i18n TODO
+- [ ]version TODO
+- [ ] 首頁按鈕 TODO

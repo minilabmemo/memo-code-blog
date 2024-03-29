@@ -8,8 +8,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'F2E Note', link: '/markdown-examples' },
-      { text: 'Vue', link: '/vue/learn' }
+      { text: 'F2E Note', link: '/base/' },
+      { text: 'Vue', link: '/vue/' }
     ],
 
     sidebar:
@@ -17,8 +17,8 @@ export default defineConfig({
       {
         text: 'F2E Note',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'bootstrap', link: '/base/bootstrap_note' },
+          { text: 'Rwd', link: '/base/rwd-noted' }
         ]
       },   
       {
@@ -53,7 +53,15 @@ export default defineConfig({
     ,
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'github', link: 'https://github.com/minilabmemo' }
+    ],
+    footer: {
+      message: '',
+      copyright: 'Copyright © 2024-minilabmemo'
+    }
+    ,  
+    search: {
+      provider: 'local'
+    }
   }
 })
