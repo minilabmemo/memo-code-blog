@@ -158,6 +158,7 @@ export default {
 ```
 ---
 outline: deep / // [!code ++]
+outline: [2, 3]
 ---
 ```
 

@@ -1,5 +1,5 @@
 ---
-outline: deep
+outline: [2, 3]
 ---
 
 # bootstrap + vue 使用筆記
@@ -8,11 +8,11 @@ outline: deep
 
 - [怎樣也不會失手的 Bootstrap 格線運用技巧](https://ithelp.ithome.com.tw/articles/10251180)
 
-### [30 天轉生到 bootstrap 5 的意識界系列 第 8 篇](https://ithelp.ithome.com.tw/articles/10270835)
+- [30 天轉生到 bootstrap 5 的意識界系列 第 8 篇](https://ithelp.ithome.com.tw/articles/10270835)
 
-- 在使用格線系統時最外層至少一定要有一個 .container。
-- .container 下第一層不一定要是 .row。.row 內層只能是 .col。.col 上一層只能是 .row。
-- 不要更改寬度（margin、padding），容易造成跑版，有需要則在 row 使用 gutters 即可，但可以加上下的 margin 與 padding。
+  - 在使用格線系統時最外層至少一定要有一個 .container。
+  - .container 下第一層不一定要是 .row。.row 內層只能是 .col。.col 上一層只能是 .row。
+  - 不要更改寬度（margin、padding），容易造成跑版，有需要則在 row 使用 gutters 即可，但可以加上下的 margin 與 padding。
 
 ## 基本
 
@@ -28,6 +28,113 @@ outline: deep
 
 - [bootstrap5 首頁 Snippets & examples](https://getbootstrap.com/docs/5.3/examples/)
   - 中間有很多範例可以參考，雖然這邊沒有顯示完整程式碼，但打開開發模式複製似乎就可以了。
+
+### model
+
+- 新增 html
+- 程式碼
+
+```
+import Modal from 'bootstrap/js/dist/modal';
+const myOffcanvas = document.getElementById('productModal')
+  if (myOffcanvas){
+    const bsOffcanvas = new Modal(myOffcanvas)
+    bsOffcanvas.hide();
+    console.log('hide',);
+  }
+
+
+```
+
+#### 問題：在開啟 modal 後切換到上一頁，modal 雖然被關掉，但遮罩還是存在，導致畫面不能操作
+
+- body 顯示
+
+```
+<body class="modal-open" style="overflow: hidden; padding-right: 15px;">
+<div class="modal-backdrop fade show"></div>
+
+
+```
+
+##### 解決
+
+- 關鍵字：bootstrap modal-backdrop not removed
+- 相關文章
+  - [bootstrap-modal-backdrop-doesnt-disappear](https://stackoverflow.com/questions/11519660/twitter-bootstrap-modal-backdrop-doesnt-disappear) 不太懂
+  - [bootstrap-modal-sitting-behind-backdrop](https://stackoverflow.com/questions/20983110/bootstrap-modal-sitting-behind-backdrop) 不太懂
+  - [Bootstrap 之 modal 关闭，但遮罩层无法隐藏](https://blog.csdn.net/w926498/article/details/82114253) 強制把樣式清空，可解
+  - [https://github.com/valor-software/ngx-bootstrap/issues/853](ClosedBackdrop not being removed after hiding Modal) 一樣
+
+###### 方法 1:切換路由就重整？（無用）
+
+- [Vue.js+SpringSPA 中切换路由时刷新页面](https://www.volcengine.com/theme/6016986-V-7-1)
+  加了反而無限重整...
+
+###### 方法 2:找到 Modal 呼叫 hide() （無用）
+
+雖然有找到，但不知道為什麼沒有作用。
+
+```
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach',);
+  const myOffcanvas = document.getElementById('productModal')
+  if (myOffcanvas){
+    const bsOffcanvas = new Modal(myOffcanvas)
+    bsOffcanvas.hide();
+    console.log('hide',);
+  }
+
+  next()
+})
+
+```
+
+##### 方法 3: 切換路由手動清空樣式（可解）
+
+```
+router.beforeEach((to, from, next) => {
+
+  document.body.classList.remove('modal-open');
+  document.body.removeAttribute('style');
+  const backdrop = document.querySelector('.modal-backdrop.fade.show');
+  if (backdrop&&backdrop.parentNode) {
+      backdrop.parentNode.removeChild(backdrop);
+  }
+
+  next()
+})
+
+```
+
+##### 方法 4: 利用 Backdrop 去關閉（無解）
+
+不知道為什麼無用，看源碼其實也是在\_hideModal 清空樣式。
+
+```
+import Backdrop from 'bootstrap/js/dist/util/backdrop.js';
+router.beforeEach((to, from, next) => {
+  const backdrop = new Backdrop()
+  backdrop.hide();
+
+  next()
+})
+//modal.js源碼
+    _hideModal() {
+      this._element.style.display = 'none';
+      this._element.setAttribute('aria-hidden', true);
+      this._element.removeAttribute('aria-modal');
+      this._element.removeAttribute('role');
+      this._isTransitioning = false;
+      this._backdrop.hide(() => {
+        document.body.classList.remove(CLASS_NAME_OPEN);
+        this._resetAdjustments();
+        this._scrollBar.reset();
+        EventHandler.trigger(this._element, EVENT_HIDDEN);
+      });
+    }
+
+```
 
 ### navBar + collapse 折疊導覽
 
@@ -235,7 +342,7 @@ import Offcanvas from 'bootstrap/js/dist/offcanvas'; // [!code ++]
 
 ---
 
-## 格線系統
+## 網格系統 (Grid system)
 
 col 加起來要是 12，但如果超過會自動換行，可以利用在小螢幕時換行，大螢幕不換行
 

@@ -9,11 +9,10 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: '整理筆記', link: '/guide/' },
-      { text: 'Vue', link: '/vue/' },
       {
         text: '隨手記',
         items: [
-          { text: '草稿', link: '/draft/' },
+          { text: '前端', link: '/f2e/' },
           { text: 'Vue', link: '/vue/' },
         ]
       }
@@ -22,16 +21,28 @@ export default defineConfig({
     sidebar:
     {'/': [
       {
-        text: 'base',
+        text: 'js',
+        collapsed: false,
         items: [
-          { text: 'bootstrap', link: '/draft/base/bootstrap_note' },
-          { text: 'Rwd', link: '/draft/base/rwd-noted' }
+    
         ]
       },   
       {
-        text: 'Test',
+        text: 'css',
+        collapsed: false,
         items: [
-          { text: 'E2E test', link: '/draft/test/cypress' },
+          { text: '[flex] 預設與溢出問題', link: '/f2e/css/flex' },
+          { text: 'grid 格線系統', link: '/f2e/css/grid' },
+          { text: 'bootstrap', link: '/f2e/css/bootstrap' },
+          { text: 'Rwd', link: '/f2e/css/rwd' }
+         
+        ]
+      },
+      {
+        text: 'Test',
+        collapsed: false,
+        items: [
+          { text: 'E2E test', link: '/f2e/test/cypress' },
          
         ]
       },
@@ -42,16 +53,17 @@ export default defineConfig({
         text: 'vitepress',
         items: [
           { text: 'start', link: '/vue/vitepress/start' },
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: '(備) Markdown Examples', link: '/markdown-examples' },
+          { text: '(備) Runtime API Examples', link: '/api-examples' }
          
         ]
       },
       {
-        text: 'Vue',
+        text: 'Vue3',
         items: [
          
-          { text: 'start', link: '/vue/learn' },
+          { text: 'start', link: '/vue/vue3/learn' },
+          { text: 'composition', link: '/vue/vue3/composition' },
          
         ]
       }
