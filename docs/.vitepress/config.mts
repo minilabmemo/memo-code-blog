@@ -32,8 +32,11 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: '[flex] 預設與溢出問題', link: '/f2e/css/flex' },
-          { text: 'grid 格線系統', link: '/f2e/css/grid' },
-          { text: 'bootstrap', link: '/f2e/css/bootstrap' },
+          { text: '[flex] 均分與bootstrap格線系統', link: '/f2e/css/flex_row' },
+          { text: '[flex] 對齊與自動邊界', link: '/f2e/css/flex_margin' },
+          { text: '[grid] 格線系統', link: '/f2e/css/grid' },
+          { text: '[bootstrap] 應用', link: '/f2e/css/bootstrap' },
+    
           { text: 'Rwd', link: '/f2e/css/rwd' }
          
         ]
