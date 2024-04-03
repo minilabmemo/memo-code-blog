@@ -3,8 +3,8 @@ outline: deep
 ---
 
 <script setup>
-import row from './bootstrap/row.vue'
-import flex from './bootstrap/flex.vue'
+import row from './components/bootstrap/row.vue'
+import flex from './components/bootstrap/flex.vue'
 
 </script>
 

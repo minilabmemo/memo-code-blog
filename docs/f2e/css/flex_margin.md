@@ -3,8 +3,8 @@ outline: deep
 ---
 
 <script setup>
-import flexHeader from './flex/flexHeader.vue'
-import flexLayout from './flex/flexLayout.vue'
+import flexHeader from './components/flex/flexHeader.vue'
+import flexLayout from './components/flex/flexLayout.vue'
 
 
 </script>

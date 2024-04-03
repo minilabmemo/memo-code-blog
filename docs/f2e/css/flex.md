@@ -3,9 +3,9 @@ outline: deep
 ---
 
 <script setup>
-import flex3box from './flex/flex3box.vue'
-import flex3boxOver from './flex/flex3boxOver.vue'
-import flex3boxImg from './flex/flex3boxImg.vue'
+import flex3box from './components/flex/flex3box.vue'
+import flex3boxOver from './components/flex/flex3boxOver.vue'
+import flex3boxImg from './components/flex/flex3boxImg.vue'
 </script>
 
 # flex 彈性盒子排版

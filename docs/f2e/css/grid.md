@@ -3,8 +3,8 @@ outline: deep
 ---
 
 <script setup>
-import grid from './grid/grid.vue'
-import gridName from './grid/gridName.vue'
+import grid from './components/grid/grid.vue'
+import gridName from './components/grid/gridName.vue'
 
 
 

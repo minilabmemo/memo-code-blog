@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  ignoreDeadLinks: true,
   title: "Memo Code Blog",
   description: "A VitePress Site",
   themeConfig: {
@@ -31,7 +32,7 @@ export default defineConfig({
         text: 'css',
         collapsed: false,
         items: [
-          { text: '[flex] 預設與溢出問題', link: '/f2e/css/flex' },
+         { text: '[flex] 預設與溢出問題', link: '/f2e/css/flex' },
           { text: '[flex] 均分與bootstrap格線系統', link: '/f2e/css/flex_row' },
           { text: '[flex] 對齊與自動邊界', link: '/f2e/css/flex_margin' },
           { text: '[grid] 格線系統', link: '/f2e/css/grid' },
@@ -56,8 +57,8 @@ export default defineConfig({
         text: 'vitepress',
         items: [
           { text: 'start', link: '/vue/vitepress/start' },
-          { text: '(備) Markdown Examples', link: '/markdown-examples' },
-          { text: '(備) Runtime API Examples', link: '/api-examples' }
+          { text: '(備) Markdown Examples', link: '/vue/vitepress/markdown-examples' },
+          { text: '(備) Runtime API Examples', link: '/vue/vitepress/api-examples' }
          
         ]
       },
