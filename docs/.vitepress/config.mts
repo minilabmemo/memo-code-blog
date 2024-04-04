@@ -58,8 +58,8 @@ export default defineConfig({
         text: 'Vue3',
         items: [
          
-          { text: 'start', link: '/vue/vue3/learn' },
-          { text: 'composition', link: '/vue/vue3/composition' },
+          { text: '基礎與概念', link: '/vue/vue3/learn' },
+          { text: 'composition 用法', link: '/vue/vue3/composition' },
          
         ]
       },

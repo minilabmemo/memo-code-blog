@@ -71,7 +71,7 @@ title: composition 組合式 API
 
 > 在 setup() 函数中手动暴露大量的状态和方法非常繁琐。幸运的是，我们可以通过使用单文件组件 (SFC) 来避免这种情况。我们可以使用 `<script setup>` 来大幅度地简化代码
 
-## 響應式資料
+## 響應式 API
 
 ### ref (推薦使用)
 
@@ -126,55 +126,148 @@ const app = createApp({
 });
 ```
 
+### 計算屬性 computed
+
+- [计算属性](https://cn.vuejs.org/guide/essentials/computed.html)
+  - 计算属性 publishedBooksMessage。computed() 方法期望接收一个 getter 函数，返回值为一个计算属性 ref。和其他一般的 ref 类似
+  - 计算属性默认是只读的。当你尝试修改一个计算属性时，你会收到一个运行时警告。只在某些特殊场景中你可能才需要用到“可写”的属性，你可以通过同时提供 getter 和 setter 来创建
+
+### watch
+
+- [watch](https://cn.vuejs.org/api/reactivity-core.html#watch)
+
+```js
+const app = createApp({
+  setup(props) {
+    // 監聽純值
+    const productName = ref("蛋餅");
+    const watchText = ref("");
+    watch(productName, (newV, oldV) => {
+      watchText.value = `newV:${newV} old:${oldV}`;
+    });
+    // 監聽物件
+    // # ref, reactive 在此運作相同
+    const product = ref({
+      name: "蛋餅",
+      price: 30,
+      vegan: false,
+      other: {
+        name: "送安檢",
+      },
+    });
+    const watchText2 = ref("");
+    watch(
+      () => product.value.other.name, // [!code warning] 對象內容需要用箭頭
+      (newV, oldV) => {
+        watchText2.value = `newV:${newV} old:${oldV}`;
+      }
+    );
+    return {
+      product,
+      productName,
+      watchText,
+      watchText2,
+    };
+  },
+});
+```
+
+- 多值監聽
+
+  ```js
+  watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
+    /* ... */
+  });
+  ```
+
+- 深層監聽
+  - [深层侦听器](https://cn.vuejs.org/guide/essentials/watchers.html#deep-watchers)
+  - TBO
+
+### WatchEffect [Computed 結合體]
+
+Watch 與 Computed 的結合體
+
+- 會自動去偵測要監聽的值，不需要先定義，有用到就監聽了，但沒辦法拿到前一個修改值
+- 初始會先執行一次，不像 watch 初次沒有值。
+
+```js
+const app = createApp({
+  setup(props) {
+    const productName = ref("蛋餅");
+
+    const product = ref({
+      name: "蛋餅",
+      price: 30,
+      vegan: false,
+      other: {
+        name: "送安檢",
+      },
+    });
+
+    const watchText = ref("");
+    watchEffect(() => {
+      console.log("productName", productName);
+      console.log("product.value.name", product.value.name);
+      watchText.value = `值：${product.value.name}`;
+    });
+    return {
+      product,
+      productName,
+      watchText,
+    };
+  },
+});
+```
+
+- watchEffect 是可以被停止的
+
+```js
+const num = ref(0);
+const price = ref(0);
+const stopThis = watchEffect(() => {
+  price.value = `price 值：${product.value.price}`;
+  num.value++;
+  if (num.value === 10) {
+    stopThis();
+  }
+});
+```
+
 ## 生命週期（same）
 
 對應表可以參考 - [元件的生命週期與更新機制](https://book.vue.tw/CH1/1-7-lifecycle.html)
 
 - onMounted 可以定義多次，並放在相關資料附近，增加查找效率。
 
-```
+```js
   setup() {
-                const num = ref(1);
-                onMounted(() => {
-                  num.value = 100;
-                });
+       const num = ref(1);
+       onMounted(() => {// 可以定義多次
+         num.value = 100;
+       })
+     const person = ref({
+         name: "小明",
+         price: 0,
+       });
+       const add = (n) => {
+         num.value += n;
 
-                const person = ref({
-                  name: "小明",
-                  price: 0,
-                });
-                const add = (n) => {
-                  num.value += n;
-                };
+     onMounted(() => {// 可以定義多次
+         person.value = {
+           name: "小美",
+           price: 0,
+         };
+       })
+   return {
+         num,person,ad
+     };
+  }
+};
 
-                // 生命週期
-                // #1 https://v3.cn.vuejs.org/api/composition-api.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90
-
-                onMounted(() => {
-                  person.value = {
-                    name: "小美",
-                    price: 0,
-                  };
-                });
-
-              return {
-                  // 外部需要用到的值，則需要匯出
-                  num,
-                  person,
-                  add,
-
-                };
-              },
-            });
 ```
 
-## 計算屬性 computed
-
-- [计算属性](https://cn.vuejs.org/guide/essentials/computed.html)
-  - 计算属性 publishedBooksMessage。computed() 方法期望接收一个 getter 函数，返回值为一个计算属性 ref。和其他一般的 ref 类似
-  - 计算属性默认是只读的。当你尝试修改一个计算属性时，你会收到一个运行时警告。只在某些特殊场景中你可能才需要用到“可写”的属性，你可以通过同时提供 getter 和 setter 来创建
-
-## props
+## props [父傳子]
 
 - 在没有使用 的组件中，prop 可以使用 props 选项来声明
 - prop 被用于传入初始值；而子组件想在之后将其作为一个局部数据属性。在这种情况下，最好是新定义一个局部数据属性，从 props 上获取初始值即可：
@@ -194,60 +287,97 @@ export default {
 };
 ```
 
-## emit
+## emit [子對父]
 
-- [组合式 API：setup()] (https://cn.vuejs.org/api/composition-api-setup.html#composition-api-setup)
+子组件还可以向父组件触发事件。
+
+### setup 中存 context 取得
+
+- [组合式 API：setup()](https://cn.vuejs.org/api/composition-api-setup.html#composition-api-setup)
 - API：setup(props,context), context 內容有 attrs, slots, emit, expose
 - 而 emit 的用法跟前面章節一樣。
 
 ```js
      setup(props, { emit }) {
-                function pushData() {
-                  console.log("pushData");
-                  emit("push-data", "內部傳出去的資料");
-                }
+         function pushData() {
+           console.log("pushData");
+           emit("push-data", "內部傳出去的資料");
+         }
 
-                return {
-                  pushData,
-                };
-              },
-            };
+         return {
+           pushData,
+         };
+       },
+     };
+
+```
+
+### script setup 使用 defineEmits
+
+```js
+<script setup>
+import { ref } from 'vue'
+import ChildComp from './ChildComp.vue'
+
+const childMsg = ref('No child msg yet')
+</script>
+
+
+//ChildComp
+<template>
+  <ChildComp @response="(msg) => childMsg = msg" />
+  <p>{{ childMsg }}</p>
+</template>
+
+<script setup>
+const emit = defineEmits(['response'])
+
+emit('response', 'hello from child')
+</script>
+
+<template>
+  <h2>Child component</h2>
+</template>
 
 ```
 
 ## 訪問模板引用 dom 的 ref
 
-- [访问模板引用](https://cn.vuejs.org/guide/essentials/template-refs.html#accessing-the-refs)
+- [基礎 - 访问模板引用](https://cn.vuejs.org/guide/essentials/template-refs.html#accessing-the-refs)
+- [内置内容 - 特殊 Attributes-ref](https://cn.vuejs.org/api/built-in-special-attributes.html#ref)
 
+```js
+<button type="button" ref="btn">
+  這裡有一個按鈕
+</button>;
+
+const app = createApp({
+  components: {
+    card,
+  },
+  setup() {
+    const person = ref({
+      name: "卡斯伯",
+    });
+
+    const btn = ref(null); // [!code error] 必須跟 html ref 同名
+    onMounted(() => {
+      console.log("ref", btn.value); // <button type="button" ref="btn">這裡有一個按鈕</button>
+    });
+    return {
+      person,
+      btn,
+    };
+  },
+});
 ```
-  <button type="button" ref="btn">這裡有一個按鈕</button>
 
-
-   const app = createApp({
-              components: {
-                card,
-              },
-              setup() {
-                const person = ref({
-                  name: "卡斯伯",
-                });
-
-                const btn = ref(null);  // [!code error]必須跟html ref 同名
-                onMounted(() => {
-                  console.log("ref", btn.value); // <button type="button" ref="btn">這裡有一個按鈕</button>
-                });
-                return {
-                  person,
-                  btn,
-                };
-              },
-            });
-```
-
-## Provider 與 Inject 跨層級 props
+## Provider 與 Inject [跨層級 props]
 
 - 預設不會有雙向綁定，內層採用 v-model 並不會互動。
 - 如果要互動的話就改用 ref(person...) 來定義
+- [依賴注入](https://cn.vuejs.org/guide/components/provide-inject.html)
+  - 常推荐在一个单独的文件中导出这些注入名 Symbol
 
 ```
 父
@@ -257,7 +387,7 @@ export default {
               },
               setup(props) {
                 const person = {
-                  name: "卡斯伯",
+                  name: "Nana",
                 };
 
                 provide("person", person);
@@ -285,115 +415,19 @@ export default {
 
 ```
 
-## watch
-
-- [watch](https://cn.vuejs.org/api/reactivity-core.html#watch)
-
-```
-    const app = createApp({
-              setup(props) {
-                // 監聽純值
-                const productName = ref("蛋餅");
-                const watchText = ref("");
-                watch(productName, (newV, oldV) => {
-                  watchText.value = `newV:${newV} old:${oldV}`;
-                });
-                // 監聽物件
-                // # ref, reactive 在此運作相同
-                const product = ref({
-                  name: "蛋餅",
-                  price: 30,
-                  vegan: false,
-                  other: {
-                    name: "送安檢",
-                  },
-                });
-                const watchText2 = ref("");
-                watch(
-                  () => product.value.other.name,  // [!code warning] 對象內容需要用箭頭
-                  (newV, oldV) => {
-                    watchText2.value = `newV:${newV} old:${oldV}`;
-                  }
-                );
-                return {
-                  product,
-                  productName,
-                  watchText,
-                  watchText2,
-                };
-              },
-            });
-
-```
-
-- 多值監聽
-
-  ```
-  watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
-  /* ... */
-  })
-  ```
-
-- 深層監聽
-  - [深层侦听器](https://cn.vuejs.org/guide/essentials/watchers.html#deep-watchers)
-  - TBO
-
-## WatchEffect [Computed 結合體]
-
-Watch 與 Computed 的結合體
-
-- 會自動去偵測要監聽的值，不需要先定義，有用到就監聽了，但沒辦法拿到前一個修改值
-- 初始會先執行一次，不像 watch 初次沒有值。
-
-```
-   const app = createApp({
-              setup(props) {
-                const productName = ref("蛋餅");
-
-                const product = ref({
-                  name: "蛋餅",
-                  price: 30,
-                  vegan: false,
-                  other: {
-                    name: "送安檢",
-                  },
-                });
-
-                const watchText = ref("");
-                watchEffect(() => {
-                  console.log("productName", productName);
-                  console.log("product.value.name", product.value.name);
-                  watchText.value = `值：${product.value.name}`;
-                });
-                return {
-                  product,
-                  productName,
-                  watchText,
-                };
-              },
-            });
-
-```
-
-- watchEffect 是可以被停止的
-
-```
-
-                const num = ref(0);
-                const price = ref(0);
-                const stopThis = watchEffect(() => {
-                  price.value = `price 值：${product.value.price}`;
-                  num.value++;
-                  if (num.value === 10) {
-                    stopThis();
-                  }
-                });
-
-```
-
-## 組合式函式[邏輯服用]
+## 組合式函式[邏輯復用]
 
 類似 hook，按照惯例，组合式函数名以“use”开头。
 
 - [组合式函数](https://cn.vuejs.org/guide/reusability/composables.html)
   - “组合式函数”(Composables) 是一个利用 Vue 的组合式 API 来封装和复用有状态逻辑的函数。核心逻辑完全一致，我们做的只是把它移到一个外部函数中去，并返回需要暴露的状态。和在组件中一样
+
+## TODO
+
+- script setup
+  - [ ]動態組件 用在哪？
+  - [ ] [命名空间组件](https://cn.vuejs.org/api/sfc-script-setup.html#dynamic-components) 怎麼用？
+  - [ ]使用自定义指令
+  - [ ][defineProps() 和 defineEmits()](https://cn.vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) 等 ts
+  - [ ] [与普通的 script 一起使用](https://cn.vuejs.org/api/sfc-script-setup.html#usage-alongside-normal-script)
+  - await & 限制等
