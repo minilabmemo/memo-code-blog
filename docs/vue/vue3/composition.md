@@ -9,7 +9,10 @@ title: composition 組合式 API
 
 - [为什么要有组合式 API？](https://cn.vuejs.org/guide/extras/composition-api-faq)
 
+::: details
 ![img](https://user-images.githubusercontent.com/499550/62783026-810e6180-ba89-11e9-8774-e7771c8095d6.png)
+
+:::
 
 ## Proxy
 
@@ -64,7 +67,13 @@ title: composition 組合式 API
           </script>
 ```
 
-## ref
+### script setup
+
+> 在 setup() 函数中手动暴露大量的状态和方法非常繁琐。幸运的是，我们可以通过使用单文件组件 (SFC) 来避免这种情况。我们可以使用 `<script setup>` 来大幅度地简化代码
+
+## 響應式資料
+
+### ref (推薦使用)
 
 - Ref 可以持有任何类型的值，包括深层嵌套的对象、数组或者 JavaScript 内置的数据结构，比如 Map。
 - Ref 是一個 RefImpl 結構，內容 value 可以是純值或是 Proxy。
@@ -95,7 +104,7 @@ RefImpl {__v_isShallow: false, dep: undefined, __v_isRef: true,
  _rawValue: {…}, _value: Proxy(Object)}
 ```
 
-## reactive
+### reactive（單純的 Proxy）
 
 - 非原始值将通过 reactive() 转换为响应式代理。
 - 是一個 Proxy 對象，需注意不要重新賦予對象，會使 Proxy 失去作用。所以建議用 const 來定義。
@@ -117,7 +126,7 @@ const app = createApp({
 });
 ```
 
-## 生命週期
+## 生命週期（same）
 
 對應表可以參考 - [元件的生命週期與更新機制](https://book.vue.tw/CH1/1-7-lifecycle.html)
 
@@ -329,7 +338,9 @@ export default {
   - [深层侦听器](https://cn.vuejs.org/guide/essentials/watchers.html#deep-watchers)
   - TBO
 
-## Watch 與 Computed 的結合體，WatchEffect
+## WatchEffect [Computed 結合體]
+
+Watch 與 Computed 的結合體
 
 - 會自動去偵測要監聽的值，不需要先定義，有用到就監聽了，但沒辦法拿到前一個修改值
 - 初始會先執行一次，不像 watch 初次沒有值。
@@ -379,3 +390,10 @@ export default {
                 });
 
 ```
+
+## 組合式函式[邏輯服用]
+
+類似 hook，按照惯例，组合式函数名以“use”开头。
+
+- [组合式函数](https://cn.vuejs.org/guide/reusability/composables.html)
+  - “组合式函数”(Composables) 是一个利用 Vue 的组合式 API 来封装和复用有状态逻辑的函数。核心逻辑完全一致，我们做的只是把它移到一个外部函数中去，并返回需要暴露的状态。和在组件中一样

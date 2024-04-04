@@ -9,13 +9,14 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
+    
       { text: '整理筆記', link: '/guide/' },
       {
         text: '隨手記',
         items: [
           { text: '前端', link: '/f2e/' },
           { text: 'Vue', link: '/vue/' },
+          { text: 'Vitepress', link: '/vue/vitepress/start' },
         ]
       }
     ],
@@ -53,7 +54,15 @@ export default defineConfig({
       },
     ],
     '/vue/': [
-    
+      {
+        text: 'Vue3',
+        items: [
+         
+          { text: 'start', link: '/vue/vue3/learn' },
+          { text: 'composition', link: '/vue/vue3/composition' },
+         
+        ]
+      },
       {
         text: 'vitepress',
         items: [
@@ -64,14 +73,14 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Vue3',
+        text: '其他',
         items: [
-         
-          { text: 'start', link: '/vue/vue3/learn' },
-          { text: 'composition', link: '/vue/vue3/composition' },
+          { text: 'pinia 跨元件狀態溝通', link: '/vue/others/pinia' },
+       
          
         ]
-      }
+      },
+    
     ]
   }
     ,

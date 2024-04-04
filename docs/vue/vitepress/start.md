@@ -129,31 +129,81 @@ export default defineConfig({
 ### Markdown 扩展
 
 - 參考 [Markdown 扩展](https://vitepress.dev/zh/guide/markdown)
+- 推薦插件 [vitePress Snippets](https://marketplace.visualstudio.com/items?itemName=zhoucheng0431.vitepress-snippets)
+  - 只要打 / 後就可以快速選擇對應快速鍵，超級方便。
 
+#### 代碼區塊
+
+- 插件使用 code-block 可以快速完成代碼區塊插入
 - 使用 sh 搭配＄ 會發現按下複製＄不會被複製
 
-````
+````md
 ```sh
 $ xxx
+```
 ````
 
-- 代碼可以增加 高亮 效果 `// [!code ++]`
+- 代碼可以增加 高亮 效果 `// [!code ++] ,focus等`，使用插件打/code-helper
 
 ````
 ```js
 export default {
+  key: "MyComponent",  // [!code --]
   name: "MyComponent",  // [!code ++]
-
+  code warning// [!code warning]
+  code error// [!code error]
 };
 ````
 
-- 推薦插件 [vitePress Snippets](https://marketplace.visualstudio.com/items?itemName=zhoucheng0431.vitepress-snippets)
-  - 只要打 / 後就可以快速選擇對應快速鍵，超級方便。
+- 插件打 code-group
+
+::: code-group
+
+```js [js 區塊]
+js;
+```
+
+```css [css 區塊]
+css
+```
+
+:::
+
+#### 提示框
+
+::: tip
+出現提示框
+
+> 使用插件打/container,後打 info[灰色], tip[淡紫色],warning[黃色],danger[紅色]
+
+:::
+
+::: details 折疊框 details
+details 會出現折疊框。
+:::
+
+#### vue 組件
+
+甚至可以在 md 中寫 vue，相對路徑引入即可成功，寫 css 也沒問題！！
+
+```js
+<script setup>
+import CustomComponent from './components/test.vue'
+</script>
+
+## hello: worldss
+
+<CustomComponent />
+
+```
 
 ### frontmatter 配置
 
 - 參考 [vitepress frontmatter 配置](https://vitepress.dev/zh/reference/frontmatter-config)
-- 顯示多層標題，也可以結合數字
+
+#### 顯示多層標題
+
+也可以結合數字
 
 ```
 ---
@@ -217,4 +267,7 @@ export default {
 - [ ]i18n TODO
 - [ ]version TODO
 - [ ] 首頁按鈕 TODO
-- [ ]vue 組建引入 TODO
+- [ ] 留言區
+- [ ] 廣告
+- [ ]Google 分析
+- [ ]自訂樣式
