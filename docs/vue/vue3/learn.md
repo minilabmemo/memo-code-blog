@@ -49,3 +49,7 @@ router.beforeEach((to, from, next) => {
 - 先定義外層接收的方法 getData(text)
 - 定義內層的 $emit 觸發方法 button-text 的方法 內 this.$emit("emit-text", this.text);前名稱後參數跟觸發按鈕 click
 - 使用 v-on 的方式觸發外層方法（口訣：前內、後外）button-text @emit-text="getData" 綁定前兩項
+
+## TODO
+
+- transition& keep-alive

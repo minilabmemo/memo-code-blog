@@ -271,3 +271,9 @@ export default {
 - [ ] 廣告
 - [ ]Google 分析
 - [ ]自訂樣式
+
+## 延伸
+
+- 坎入 script 與到錯誤 Tags with side effec
+  - [How to Add a Script Tag in a Vue Component](https://gaute.dev/dev-blog/script-in-vue)
+  - 利用 useScriptTag 似乎有用

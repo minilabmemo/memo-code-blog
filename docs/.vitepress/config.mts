@@ -10,13 +10,14 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
     
-      { text: '整理筆記', link: '/guide/' },
+      { text: '部落格', link: 'https://minilabmemo.github.io/' },
       {
         text: '隨手記',
         items: [
           { text: '前端', link: '/f2e/' },
           { text: 'Vue', link: '/vue/' },
           { text: 'Vitepress', link: '/vue/vitepress/start' },
+          { text: '概念', link: '/guide/' },
         ]
       }
     ],
@@ -81,8 +82,20 @@ export default defineConfig({
         ]
       },
     
+    ],
+    '/guide/': [
+      {
+        text: 'javascript',
+        items: [
+         
+          { text: 'oop 物件導向', link: '/guide/js/oop' },
+         
+         
+        ]
+      }
+    
     ]
-  }
+   }
     ,
 
     socialLinks: [
