@@ -67,7 +67,7 @@ export default defineConfig({
       {
         text: 'vitepress',
         items: [
-          { text: 'start', link: '/vue/vitepress/start' },
+          { text: '使用筆記', link: '/vue/vitepress/start' },
           { text: '(備) Markdown Examples', link: '/vue/vitepress/markdown-examples' },
           { text: '(備) Runtime API Examples', link: '/vue/vitepress/api-examples' }
          

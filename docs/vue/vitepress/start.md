@@ -182,6 +182,10 @@ css
 details 會出現折疊框。
 :::
 
+#### 內部連結
+
+- `# 使用自定义锚点 {#my-anchor}` 然後使用 `[Link to raw.html](./html.html#my-anchor)` 可直接導向到內部文章。
+
 #### vue 組件
 
 甚至可以在 md 中寫 vue，相對路徑引入即可成功，寫 css 也沒問題！！

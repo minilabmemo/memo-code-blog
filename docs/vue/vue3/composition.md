@@ -415,7 +415,7 @@ const app = createApp({
 
 ```
 
-## 組合式函式[邏輯復用]
+## 組合式函式[邏輯復用] {#composables}
 
 類似 hook，按照惯例，组合式函数名以“use”开头。
 

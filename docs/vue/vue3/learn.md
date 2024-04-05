@@ -4,6 +4,31 @@
 
 - [互動教程](https://cn.vuejs.org/tutorial/#step-1)
 
+## 生命週期 [Lifecycle Hooks]
+
+Vue 元件實體生命週期 (Instance Lifecycle Hooks)
+
+- [前端新手筆記-Vue.js 系列 第 4 篇 Day4 - Vue 生命週期介紹](https://ithelp.ithome.com.tw/articles/10217199)
+  這篇整理的很好。
+  > 取得 API 回傳資料交給 Vue.js 處 理理時，應該在哪個階段執⾏？A：created 階段之後都 ok(包括 created、beforeMount 與 mounted)，因為元件實體已經被建立，我們可以取得 data 資料。老師建議放 created 階段，不建議在放在 mounted 因為資料若為空陣列網頁畫面可能會有一段空白，但可以用 loading 圖蓋過。
+
+## 混入 (mixin) [邏輯復用]
+
+- [可复用性 & 组合 mixin](https://v2.cn.vuejs.org/v2/guide/mixins.html)
+
+ex: getAllProduct.js 同時在 home,product 頁去引入 minxin
+
+但是這樣放如果有發出 network，看不到是哪一隻發出的，只會顯示 getAllProduct.js
+是否真的要分呢？問問 GPT 是說可以用一個參數來分。
+
+> Vue3 Composition API 可以利用“组合式函数”(Composables) [Link to composables](./composition.html#composables) 替换 Vue Mixins
+>
+> - 參考文
+>
+>   - [Vue3 Composition API 如何替换 Vue Mixins](https://juejin.cn/post/6844904136065056781)
+>
+> - [掰惹 Mixin: Vue3-Composition API 的複用-Composables-D09](https://ithelp.ithome.com.tw/articles/10297490?sc=rss.iron)
+
 ## 路由切換
 
 - [vue 监听路由切换](https://juejin.cn/s/vue%E7%9B%91%E5%90%AC%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2)
@@ -30,7 +55,7 @@ router.beforeEach((to, from, next) => {
 
 ```
 
-## emit
+## emit 撰寫方法
 
 內層元件往外傳時 要用 e mit 事件的形式，不一定要傳遞資料
 
@@ -53,3 +78,17 @@ router.beforeEach((to, from, next) => {
 ## TODO
 
 - transition& keep-alive
+
+## 疑難排解
+
+### Q:無限迴圈
+
+- 遇到無限迴圈問題，思考生命週期，決定是在 create,update 還是使用 computed 或是 watch 下去轉寫。
+
+- 路由切換會觸發 update 需注意。
+
+### v-show 沒作用的問題
+
+用 v-show 需注意有沒有用 display
+
+d-flex, 否則有可能失效，解法是要再包一層。
