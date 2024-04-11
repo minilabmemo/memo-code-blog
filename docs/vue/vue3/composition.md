@@ -184,6 +184,26 @@ const app = createApp({
   - [深层侦听器](https://cn.vuejs.org/guide/essentials/watchers.html#deep-watchers)
   - TBO
 
+#### 錯誤寫法
+
+注意 watch 使用上的錯誤寫法。
+
+- 在 Vue 3 中，watch 的第一个参数必须是一个 getter 函数、一个 ref 对象、一个响应式对象
+
+```js
+// 錯誤寫法 裡面要用箭頭 A watch source can only be a getter/effect function, a ref, a reactive object, or an array of these types.
+// watch(pagination.value.current_page, (newValue, oldValue) => {
+//   window.scrollTo({top: 0, behavior: 'smooth'});
+// });
+const pagination = ref({ 等等 });
+watch(
+  () => pagination.value.current_page,
+  (newValue, oldValue) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+);
+```
+
 ### WatchEffect [Computed 結合體]
 
 Watch 與 Computed 的結合體
@@ -421,6 +441,15 @@ const app = createApp({
 
 - [组合式函数](https://cn.vuejs.org/guide/reusability/composables.html)
   - “组合式函数”(Composables) 是一个利用 Vue 的组合式 API 来封装和复用有状态逻辑的函数。核心逻辑完全一致，我们做的只是把它移到一个外部函数中去，并返回需要暴露的状态。和在组件中一样
+
+## 路由參數
+
+```js
+import { useRoute } from "vue-router";
+const route = useRoute();
+
+//route.params.category
+```
 
 ## TODO
 

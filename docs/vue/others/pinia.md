@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # Pinia
 
 ## 安裝
@@ -11,50 +15,48 @@
 - 內容參考 [Defining a Store](https://pinia.vuejs.org/core-concepts/)
   - 以下範例是用 Options API，另外 Setup Stores 有教使用 Vue Composition API 的設定方式
 
-```
+```js
 //Pinia 與 Options API 章節
-import {defineStore} from 'pinia'
-
+import { defineStore } from "pinia";
 
 //自定命名
-const useUserStore = defineStore('user store', {
+const useUserStore = defineStore("user store", {
   // other options...
 
-  //類似Data
-  state: () => ({wallet: 300, name: 'Eduardo'}),
-  ///類似Computed
+  //類似 Data
+  state: () => ({ wallet: 300, name: "Eduardo" }),
+  ///類似 Computed
   getters: {
     getUserName: (state) => `你好，${state.name}`,
   },
-  ///類似Methods
+  ///類似 Methods
   actions: {
     updateName() {
-      this.name = "小美"
+      this.name = "小美";
     },
   },
-})
+});
 
 export default useUserStore;
-
 ```
 
-#### Getters
+#### Getters [Option API 寫法]
 
 Getters are exactly the equivalent of computed values for the state of a Store.
 
 - [Getters](https://pinia.vuejs.org/core-concepts/getters.html#Getters)
 - 可以用於根據資料做排序等作法。
 
-```
-export const useCounterStore = defineStore('counter', {
+```js
+export const useCounterStore = defineStore("counter", {
   state: () => ({
     count: 0,
   }),
   getters: {
     doubleCount: (state) => state.count * 2,
   },
-})
-//取doubleCount跟取count一樣寫法
+});
+//取 doubleCount 跟取 count 一樣寫法
 ```
 
 ### 使用
@@ -117,4 +119,95 @@ export default {
 }
 </script>
 
+```
+
+## 監聽 state
+
+### 監聽所有
+
+```js
+import { useOrderStore } from "@/stores/orderStore";
+const orderStore = useOrderStore();
+watch(
+  useOrderStore,
+  (state) => {
+    console.log(`watch here`, state);
+  },
+  { deep: true }
+);
+```
+
+### 監聽單一
+
+```js
+watch(
+  () => orderStore.isOrderSendSuccess,
+  (newVlue) => {
+    console.log("newVlue.title.watch>>>", newVlue);
+  }
+);
+
+//需注意 如果監聽的是物件 要加上 deep
+watch(
+  () => orderStore.status.orderTemp,
+  (newVal) => {
+    if (newVal.paySuccess) {
+      emit("order-create", newVal.orderId);
+      emit("go-next");
+    }
+    getCart();
+  },
+  { deep: true }
+);
+```
+
+- 錯誤寫法
+
+```js
+const { order, status, isOrderSendSuccess } = storeToRefs(useOrderStore);
+
+watch(
+  () => isOrderSendSuccess,
+  (newVlue) => {
+    console.log("newVlue.title.watch>>>", newVlue);
+  }
+);
+```
+
+> 在你的 watch 中，isOrderSendSuccess 是一个 ref 对象的解构，而不是一个函数或响应式状态，因此 watch 监听不到它的变化。你应该监听 orderStore.isOrderSendSuccess 而不是解构后的变量
+
+- 參考[Vue3 筆記 | Pinia 管理全域資料](https://vocus.cc/article/654a5302fd897800015d7dd9)
+
+### options 寫法
+
+```js
+
+ computed: {
+    ...mapState(useProductStore, ['products', 'status'])
+  },
+  watch: {
+    products: {
+      handler: function (val, oldVal) {
+      //做一些事
+        }
+      }
+    },
+  },
+
+```
+
+### composition 寫法
+
+```js
+// 錯誤寫法 裡面要用箭頭 A watch source can only be a getter/effect function, a ref, a reactive object, or an array of these types.
+// watch(pagination.value.current_page, (newValue, oldValue) => {
+//   window.scrollTo({top: 0, behavior: 'smooth'});
+// });
+const pagination = ref({ 等等 });
+watch(
+  () => pagination.value.current_page,
+  (newValue, oldValue) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+);
 ```

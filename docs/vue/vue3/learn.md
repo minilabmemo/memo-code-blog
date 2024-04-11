@@ -1,3 +1,8 @@
+---
+outline: deep
+description: VitePress
+---
+
 # 學習筆記
 
 ## 參考
@@ -32,10 +37,12 @@ ex: getAllProduct.js 同時在 home,product 頁去引入 minxin
 ## 路由切換
 
 - [vue 监听路由切换](https://juejin.cn/s/vue%E7%9B%91%E5%90%AC%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2)
+- [scroll-behavior](https://router.vuejs.org/zh/guide/advanced/scroll-behavior) 滾動行為
+  - hash `xx#h1` & `id=h1`指向設定
+  - 切換路由從頂端開始
+- watch 路由变化 [option API]
 
-- 組建中
-
-```
+```js
 watch: {
   $route (to, from) {
     // 路由发生变化时的逻辑处理
@@ -47,12 +54,11 @@ watch: {
 - 会在每次路由切换之前被调用，可以用来进行权限验证、路由拦截等逻辑处理
   需要调用 next() 函数来进行下一步操作，可以传入参数来指定路由跳转的目标。
 
-```
+```js
 router.beforeEach((to, from, next) => {
   // 路由切换之前的逻辑处理
-  next()
-})
-
+  next();
+});
 ```
 
 ## emit 撰寫方法
@@ -75,10 +81,6 @@ router.beforeEach((to, from, next) => {
 - 定義內層的 $emit 觸發方法 button-text 的方法 內 this.$emit("emit-text", this.text);前名稱後參數跟觸發按鈕 click
 - 使用 v-on 的方式觸發外層方法（口訣：前內、後外）button-text @emit-text="getData" 綁定前兩項
 
-## TODO
-
-- transition& keep-alive
-
 ## 疑難排解
 
 ### Q:無限迴圈
@@ -92,3 +94,60 @@ router.beforeEach((to, from, next) => {
 用 v-show 需注意有沒有用 display
 
 d-flex, 否則有可能失效，解法是要再包一層。
+
+## ESLint 規則
+
+這個插件預設會安裝。
+
+- [html-self-closing](https://eslint.vuejs.org/rules/html-self-closing#rule-details)
+  - 這裡面有說明這裡面有說明沒有內容的需要強制閉合。
+- 新增 eslint 設定，我只有修改 normal:any 不強制閉合。
+
+```sh
+/* eslint-env node */
+require('@rushstack/eslint-patch/modern-module-resolution')
+
+module.exports = {
+  root: true,
+  'extends': [
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/eslint-config-typescript',
+    '@vue/eslint-config-prettier/skip-formatting'
+  ],
+  overrides: [
+    {
+      files: [
+        'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
+        'cypress/support/**/*.{js,ts,jsx,tsx}'
+      ],
+      'extends': [
+        'plugin:cypress/recommended'
+      ]
+    }
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest'
+  } ,
+  rules: {
+    "vue/html-self-closing": ["error", {
+      "html": {
+        "void": "never",
+        "normal": "any",
+        "component": "always"
+      },
+      "svg": "always",
+      "math": "always"
+    }]
+  }
+
+}
+
+
+```
+
+---
+
+## TODO
+
+- transition& keep-alive

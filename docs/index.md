@@ -8,11 +8,11 @@ hero:
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /vue/vitepress/markdown-examples
+      text: Vue Learn
+      link: /vue/
     - theme: alt
-      text: API Examples
-      link: /vue/vitepress/api-examples
+      text: F2E Road
+      link: /f2e/
 
 features:
   - title: Feature A

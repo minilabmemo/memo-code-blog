@@ -13,7 +13,7 @@ svg:hover {
 
 - 如果是按鈕 hover 影響 svg 可以改成：
   - 另外記得加上手機版:active 判断手指按下
-  - :focus-visible ：只有使用键盘的 Tab 键（或快捷键）触发焦点元素焦点环的样式。
+  - :focus-visible：只有使用键盘的 Tab 键（或快捷键）触发焦点元素焦点环的样式。
 
 ```
 .btn-outline-primary:hover svg,
@@ -24,3 +24,7 @@ svg:hover {
   stroke: white;
 }
 ```
+
+## 更換捲軸顏色
+
+- [前端開發｜自定義網頁捲軸 (Scrollbar) 樣式](https://www.astralweb.com.tw/custom-scrollbar-style/)
