@@ -437,10 +437,34 @@ const app = createApp({
 
 ## 組合式函式[邏輯復用] {#composables}
 
-類似 hook，按照惯例，组合式函数名以“use”开头。
+組合式函數，類似 hook，按照惯例，组合式函数名以“use”开头。
 
 - [组合式函数](https://cn.vuejs.org/guide/reusability/composables.html)
-  - “组合式函数”(Composables) 是一个利用 Vue 的组合式 API 来封装和复用有状态逻辑的函数。核心逻辑完全一致，我们做的只是把它移到一个外部函数中去，并返回需要暴露的状态。和在组件中一样
+
+  - “组合式函数”(Composables) 是一个利用 Vue 的组合式 API 来封装和复用有状态逻辑的函数。核心逻辑完全一致，我们做的只是把它移到一个外部函数中去，并返回需要暴露的状态。和在组件中一样。
+
+    ::: info
+    nuxt3 是放在 composables 目錄，也可以把一些通用函示 js 包在裡面。
+    :::
+
+### 异步状态示例
+
+```js
+// fetch.js
+import { ref } from "vue";
+
+export function useFetch(url) {
+  const data = ref(null);
+  const error = ref(null);
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => (data.value = json))
+    .catch((err) => (error.value = err));
+
+  return { data, error };
+}
+```
 
 ## 路由參數
 

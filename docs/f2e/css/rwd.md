@@ -16,36 +16,85 @@ outline: deep
 - 如果沒有設定好很有可能爆版，出現橫向捲軸。
 - logo 的話要準備小的圖片
 
-```
-  .icon-size{
-    width: 1.2rem;
-    height: 1.2rem;
-  }
+```css
+.icon-size {
+  width: 1.2rem;
+  height: 1.2rem;
+}
 @media (min-width: 576px) {
-
-  .icon-size{
+  .icon-size {
     width: 24px;
     height: 24px;
   }
 }
-
-
 ```
 
-- 在開發者模式下需要去滑動手指才會看到捲軸的錯誤出現 //TODO
+- [ ]在開發者模式下需要去滑動手指才會看到捲軸的錯誤出現
   <img src="./rwd_phone_x.png" alt="图片描述" width="200" height="100">
 
   - 如果正確是不會出現下方的捲軸的。
 
 - 在開發者模式下抓取 scrollWidth 會看到超出手機大小 360px，建議搭配自動化測試案例去抓看看。
 
-```
+```sh
 console.log(document.documentElement.scrollWidth);
 363;  //爆版 // [!code error]
 console.log(document.documentElement.scrollWidth);
 360; //正確 // [!code ++]
 ```
 
+## 文字斷點設計
+
+在手機畫面下文字通常是 14px,BS 似乎沒有根據斷點改變字體大小，可以自己設定。
+当你在 CSS 中选择类名时，最好选择能清晰描述其用途的名称，这样可以增加代码的可读性。在这种情况下，你可以选择描述文本大小的类名，例如：
+
+```css
+/* 默认字体大小 */
+.font-normal {
+  font-size: 16px;
+}
+
+/* 在小屏幕下（宽度小于 576px）设置较小的字体大小 */
+@media (max-width: 575.98px) {
+  .font-small {
+    font-size: 14px;
+  }
+}
+
+/* 在中等屏幕下（宽度介于 576px 和 991.98px 之间）设置中等字体大小 */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .font-medium {
+    font-size: 18px;
+  }
+}
+
+/* 在大屏幕下（宽度大于等于 992px）设置较大的字体大小 */
+@media (min-width: 992px) {
+  .font-large {
+    font-size: 20px;
+  }
+}
+```
+
+这样，通过 `.font-small`、`.font-medium` 和 `.font-large` 这样的类名，就可以清楚地知道它们的作用是调整字体大小。
+
+## 字體
+
+```
+font-size: clamp( 0.875rem, 2.5vw, 1rem);
+字體是14px~16px
+
+```
+
+::: tip
+字體具有繼承，如果設在父親，裡面的子孫都會繼承，除非他本身有設定，就算設定的權限小於父親也會以本身為主。
+:::
+
+- 參考
+  - [FLUID TYPOGRAPHY TOOL](https://fluidtypography.com/#app-get-started)
+  - [vw 進化了！更好用的 CSS 自適應字體大小](https://muki.tw/responsive-css-font-size-utilities/)
+
 ## TODO
 
+- [ ]字體加法不太懂
 - [ ]是否有工具？
