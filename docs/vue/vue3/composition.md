@@ -307,6 +307,46 @@ export default {
 };
 ```
 
+### 傳入對象
+
+```js
+
+//item={ id: 1,date: "s",title: "s",tags: ["vue", "bootstrap", "pinia", "vite", "cypress"],details: ["xx"],}
+<template>
+  <WorkItem :item="item"></WorkItem>
+</template>
+
+
+//WorkItem 組件
+<template>
+  <div>
+    {{ item.date }}
+  </div>
+</template>
+
+
+
+<script setup lang="ts">
+import { defineProps } from 'vue';
+
+// 定义组件的 props
+const props = defineProps<{
+  item: {
+    id: number;
+    date: string;
+    title: string;
+    tags: string[];
+    details: string[];
+  };
+}>();
+
+// 通过 props 传递给 WorkItem 组件
+const item = props.item;
+</script>
+
+
+```
+
 ## emit [子對父]
 
 子组件还可以向父组件触发事件。
@@ -392,6 +432,22 @@ const app = createApp({
 });
 ```
 
+### 改寫 [vue2 to vue3]
+
+```diff
+- <xxx ref="AddCartConfirm">
+-  const confirmModal = $refs.AddCartConfirm;
+-  confirmModal.showModal();
+
+
+  <xxx ref="cartConfirm">
++  const cartConfirm = ref(null);
++  const confirmModal = cartConfirm.value;
+    confirmModal.showModal();
+
+
+```
+
 ## Provider 與 Inject [跨層級 props]
 
 - 預設不會有雙向綁定，內層採用 v-model 並不會互動。
@@ -466,13 +522,27 @@ export function useFetch(url) {
 }
 ```
 
-## 路由參數
+## 路由
+
+### 路由參數
 
 ```js
 import { useRoute } from "vue-router";
 const route = useRoute();
 
 //route.params.category
+```
+
+### 路由導向
+
+```js
+//   this.$router.push(`xxx`) // [!code --]
+
+import { useRoute, useRouter } from "vue-router";
+const router = useRouter();
+const goToCart = () => {
+  router.push("/user/cart/flow");
+};
 ```
 
 ## TODO

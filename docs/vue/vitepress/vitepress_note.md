@@ -268,6 +268,8 @@ export default {
 
 - [ ]代碼折疊功能需要插件
 - [ ]文章似乎不能打 tag [Open Issue Searchable tags](https://github.com/vuejs/vitepress/issues/3254)
+- [ ] markdown 語法中 task list 無法顯示
+  - [Closed Issue|Not Rendering markdown checklist](https://github.com/vuejs/vitepress/issues/413) 說要配置 markdown-it
 - [ ]i18n TODO
 - [ ]version TODO
 - [ ] 首頁按鈕 TODO
@@ -277,9 +279,9 @@ export default {
 - [ ]自訂樣式
 
 ## 延伸
+
 那天砍入一連串 html 中有 script 遇到問題。
+
 - 坎入 script 與到錯誤 Tags with side effect
   - [How to Add a Script Tag in a Vue Component](https://gaute.dev/dev-blog/script-in-vue)
   - 利用 useScriptTag 似乎有用
-
-
