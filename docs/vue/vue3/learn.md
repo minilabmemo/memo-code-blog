@@ -1,6 +1,5 @@
 ---
 outline: deep
-description: VitePress
 ---
 
 # 學習筆記
@@ -97,7 +96,10 @@ d-flex, 否則有可能失效，解法是要再包一層。
 
 ## ESLint 規則
 
-這個插件預設會安裝。
+- [Nuxt 3 學習筆記](https://hackmd.io/gAFgp8TdRyqzVM_EzFlmOA)
+
+  - Nuxt 3 + TypeScript + ESLint + Prettier 環境建置
+    這個插件預設會安裝。
 
 - [html-self-closing](https://eslint.vuejs.org/rules/html-self-closing#rule-details)
   - 這裡面有說明這裡面有說明沒有內容的需要強制閉合。
@@ -146,8 +148,17 @@ module.exports = {
 
 ```
 
+- 當 v-for 忘記使用 key 時會報問題 Custom elements in iteration require 'v-bind:key' directives. - [ ] 但無法判斷你使用的是否是 uni key
+- [ ] img alt 忘記設定：未解 a11y 確認 安裝完沒反應
+  - https://github.com/vuejs/eslint-plugin-vue/issues/466
+  - https://github.com/maranran/eslint-plugin-vue-a11y/blob/master/docs/rules/alt-text.md
+- 如何替 Vue Vite 專案加上 ESLint？https://israynotarray.com/vue/20221002/584344963/#%E5%AE%89%E8%A3%9D-ESLint-Airbnb
+  Airbnb
+
 ---
 
 ## TODO
 
 - transition& keep-alive
+- vue devTool 使用問題
+  - 總是要重開

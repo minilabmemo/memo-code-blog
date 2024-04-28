@@ -1,6 +1,5 @@
 ---
 outline: deep
-description: VitePress
 ---
 
 # vitepress 筆記

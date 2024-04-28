@@ -121,6 +121,27 @@ export default {
 
 ```
 
+### 使用 改寫 [vue2 to vue3]
+
+```js
+import {mapState, mapActions} from 'pinia'/// [!code --]
+
+import { storeToRefs } from 'pinia'; / // [!code ++]
+const orderStore =useOrderStore()// [!code ++]
+const { order,status } = storeToRefs(orderStore);// [!code ++]
+const { getOrderByID,payOrderByID } = orderStore;// [!code ++]
+
+
+  computed: {/// [!code --]
+    ...mapState(useOrderStore, ['order', 'status']),/// [!code --]
+
+  },
+
+  methods: {/// [!code --]
+    ...mapActions(useOrderStore, ['getOrderByID', 'payOrderByID']),/// [!code --]
+
+```
+
 ## 監聽 state
 
 ### 監聽所有
@@ -211,3 +232,8 @@ watch(
   }
 );
 ```
+
+## TODO
+
+- [ ]pinia 響應變化？
+- [ ]pinia data race?

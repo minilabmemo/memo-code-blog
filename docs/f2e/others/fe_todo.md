@@ -65,3 +65,33 @@
 ## 設計類
 
 - [ ] 設計網站及配色工具整理
+
+## 練習場紀錄
+
+### golang
+
+- [go-demo-playground](https://github.com/minilabmemo/go-demo-playground)
+
+### react
+
+- [STEP 1 學習教材|fe-study-react-hook ](https://github.com/minilabmemo/fe-study-react-hook)
+- [STEP 2 練習場 x 專案｜ f2e-tool-box](https://github.com/minilabmemo/f2e-tool-box) -這是一個練習專案，使用 next 建立，加上 tailwind 與客製樣式設定。
+
+#### 待辦
+
+- [ ]Next 深入
+
+### vue
+
+- [自學 x 練習專案 f2e-showcase-vite](https://github.com/minilabmemo/f2e-showcase-vite)
+  - Vue 3 in Vite. + tailwind css .
+- [STEP 1 學習教材｜ tutor-vue3-starter-file](https://github.com/minilabmemo/tutor-vue3-starter-file)
+- [STEP 2 練習場 x 專案｜ f2e-boot-vite ](https://github.com/minilabmemo/tutor-vue3-starter-file)
+  - 使用 vite 建立，加上 bootstrap 樣式設定的練習場。
+- [STEP 3| 練習專案｜ f2e-ec-store](https://github.com/minilabmemo/f2e-ec-store)
+
+#### 待辦
+
+- [ ]優化練習 update debug
+- [ ]測試完善｜元件測試學習
+- [ ]Nuxt3 深入

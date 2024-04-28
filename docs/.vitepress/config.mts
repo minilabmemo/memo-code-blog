@@ -16,7 +16,7 @@ export default defineConfig({
         text: "隨手記",
         items: [
           { text: "Vitepress", link: "/vue/vitepress/vitepress_note" },
-          { text: "概念", link: "/tech/" },
+          { text: "技術相關", link: "/tech/" },
         ],
       },
     ],
@@ -29,25 +29,31 @@ export default defineConfig({
           items: [{ text: "oop 物件導向", link: "/f2e/js/oop" }],
         },
         {
-          text: "css",
+          text: "css/html",
           collapsed: false,
           items: [
             { text: "[css] 樣式雜記", link: "/f2e/css/css_note" },
             { text: "[css] 我說那個 width 怎麼跟我想的不一樣", link: "/f2e/css/width" },
+            { text: "[css] 區塊與行內元素", link: "/f2e/css/inline_block" },
+            { text: "[css] 置中方法", link: "/f2e/css/center" },
+            { text: "[html] 使用雜記", link: "/f2e/css/html" },
+
             { text: "[flex] 預設與溢出問題", link: "/f2e/css/flex" },
             { text: "[flex] 均分與bootstrap格線系統", link: "/f2e/css/flex_row" },
             { text: "[flex] 對齊與自動邊界", link: "/f2e/css/flex_margin" },
             { text: "[grid] 格線系統", link: "/f2e/css/grid" },
             { text: "[bootstrap] 應用", link: "/f2e/css/bootstrap" },
             { text: "[flex+bootstrap] 卡片對齊", link: "/f2e/css/flex_bs_items" },
-
             { text: "[Rwd] 注意事項", link: "/f2e/css/rwd" },
           ],
         },
         {
           text: "Test / QA",
           collapsed: false,
-          items: [{ text: "[E2E test] cypress使用筆記", link: "/f2e/test/cypress" }],
+          items: [
+            { text: "[E2E test] cypress使用筆記", link: "/f2e/test/cypress" },
+            { text: "[eslint] 利用eslint檢驗程式碼品質與修正", link: "/f2e/test/eslint" },
+          ],
         },
         {
           text: "其他",
@@ -83,8 +89,8 @@ export default defineConfig({
       ],
       "/tech/": [
         {
-          text: "javascript",
-          items: [{ text: "oop 物件導向", link: "/tech/js/oop" }],
+          text: "tech",
+          items: [{ text: "[vscode]使用筆記", link: "/tech/vscode" }],
         },
       ],
     },

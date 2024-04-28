@@ -12,7 +12,8 @@
   </div>
 </template>
 
-//FIXME 似乎沒有辦法在 vite press 中啟用 bs5 用了 scoped 也一樣？會影響到 blog 樣式
 <style lang="css" scoped>
-@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
+/* //FIXME 似乎沒有辦法在 vite press 中啟用 bs5 用了 scoped 也一樣？會影響到 blog 樣式 */
+
+/* @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"); */
 </style>

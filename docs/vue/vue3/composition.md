@@ -533,6 +533,23 @@ const route = useRoute();
 //route.params.category
 ```
 
+### 監聽路由位置變化
+
+- [vue3 监听路由变化](https://juejin.cn/post/7171489778230100004)
+  - onBeforeRouteUpdate |组件内部通过 beforeRouteLeave 钩子/方式三：通过 watch 监听
+  - onBeforeRouteLeave -> setup ｀
+
+```js
+import { useRoute, useRouter } from "vue-router";
+const route = useRoute();
+watch(
+  () => route.path,
+  () => {
+    xxx;
+  }
+);
+```
+
 ### 路由導向
 
 ```js
@@ -554,3 +571,4 @@ const goToCart = () => {
   - [ ][defineProps() 和 defineEmits()](https://cn.vuejs.org/api/sfc-script-setup.html#defineprops-defineemits) 等 ts
   - [ ] [与普通的 script 一起使用](https://cn.vuejs.org/api/sfc-script-setup.html#usage-alongside-normal-script)
   - await & 限制等
+  - []props 解構與響應問題？
