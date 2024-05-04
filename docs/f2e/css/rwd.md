@@ -4,6 +4,18 @@ outline: deep
 
 # rwd
 
+## rem note
+
+```css
+/* 1.125rem;18px /
+/ 1 rem = 16px*/
+/* 0.875rem;14px /
+/ 1.25rem 20px /
+/ 1.5rem 24px /
+/ 2rem 32px /
+/ 4rem; 64px */
+```
+
 ## 參考文
 
 - [設計自適應網站，必了解的螢幕解析度](https://wdesign.tw/%E8%A8%AD%E8%A8%88%E8%87%AA%E9%81%A9%E6%87%89%E7%B6%B2%E7%AB%99%EF%BC%8C%E5%BF%85%E4%BA%86%E8%A7%A3%E7%9A%84%E8%9E%A2%E5%B9%95%E8%A7%A3%E6%9E%90%E5%BA%A6/)

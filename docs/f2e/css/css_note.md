@@ -1,5 +1,9 @@
 # css 使用
 
+## 基礎筆記
+
+- [hackmd|CSS 閱讀](https://hackmd.io/1lAf7TAxSvmsTd-9blyoUw)
+
 ## html 注意
 
 - img 標籤建議補上 alt

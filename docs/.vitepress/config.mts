@@ -42,7 +42,7 @@ export default defineConfig({
             { text: "[flex] 均分與bootstrap格線系統", link: "/f2e/css/flex_row" },
             { text: "[flex] 對齊與自動邊界", link: "/f2e/css/flex_margin" },
             { text: "[grid] 格線系統", link: "/f2e/css/grid" },
-            { text: "[bootstrap] 應用", link: "/f2e/css/bootstrap" },
+            { text: "[bootstrap] 應用 + vue", link: "/f2e/css/bootstrap" },
             { text: "[flex+bootstrap] 卡片對齊", link: "/f2e/css/flex_bs_items" },
             { text: "[Rwd] 注意事項", link: "/f2e/css/rwd" },
           ],
@@ -53,14 +53,15 @@ export default defineConfig({
           items: [
             { text: "[E2E test] cypress使用筆記", link: "/f2e/test/cypress" },
             { text: "[eslint] 利用eslint檢驗程式碼品質與修正", link: "/f2e/test/eslint" },
+            { text: "[design pattern] 設計模式", link: "/f2e/others/design_pattern" },
           ],
         },
         {
           text: "其他",
           collapsed: false,
           items: [
-            { text: "[design] 設計模式", link: "/f2e/others/design_pattern" },
-            { text: "[design] 設計收集", link: "/f2e/others/design_inspire" },
+            { text: "[design] 設計靈感/素材網站", link: "/f2e/others/design_inspire" },
+            { text: "[design/devTool] 設計與開發工具", link: "/f2e/others/design_tools" },
           ],
         },
       ],
@@ -69,6 +70,8 @@ export default defineConfig({
           text: "Vue3",
           items: [
             { text: "基礎與概念", link: "/vue/vue3/learn" },
+            { text: "vue 指令", link: "/vue/vue3/v-directives" },
+            { text: "[vite] 專案", link: "/vue/vue3/vite" },
             { text: "composition 用法", link: "/vue/vue3/composition" },
             { text: "應用情境筆記 ", link: "/vue/vue3/context" },
             { text: "邏輯復用筆記 ", link: "/vue/vue3/reuse" },

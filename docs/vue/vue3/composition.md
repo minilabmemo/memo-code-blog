@@ -28,6 +28,7 @@ title: composition 組合式 API
 - 方法使用一般 function 或是箭頭韓式都可以。
 - 需要顯示在畫面上的資料，響應式需要改用 ref 或是 reactive 來定義。
 - 如果不需要顯示在畫面上的內部參數，就不需要用 ref 等定義及 return 了。
+- 資料改成 const xxx= ref() 後，使用一定要用 xxx.value=ooo;
 
 ```js
  <div id="app">

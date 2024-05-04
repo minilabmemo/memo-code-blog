@@ -15,10 +15,10 @@ hero:
       link: /f2e/
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 程式筆記
+    details: 記錄程式碼片段與疑難雜症筆記
+  - title: 工具使用紀錄
+    details: 紀錄各種插件與工具
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
