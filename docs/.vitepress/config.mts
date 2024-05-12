@@ -6,6 +6,8 @@ export default defineConfig({
   ignoreDeadLinks: true,
   title: "Memo Code Blog",
   description: "A VitePress Site",
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -26,17 +28,20 @@ export default defineConfig({
         {
           text: "javascript",
           collapsed: false,
-          items: [{ text: "oop 物件導向", link: "/f2e/js/oop" }],
+          items: [
+            { text: "oop 物件導向", link: "/f2e/js/oop" },
+            { text: "[event loop] setTimeout", link: "/f2e/js/event_loop" },
+          ],
         },
         {
           text: "css/html",
           collapsed: false,
           items: [
+            { text: "[html] 使用雜記", link: "/f2e/css/html" },
             { text: "[css] 樣式雜記", link: "/f2e/css/css_note" },
             { text: "[css] 我說那個 width 怎麼跟我想的不一樣", link: "/f2e/css/width" },
             { text: "[css] 區塊與行內元素", link: "/f2e/css/inline_block" },
             { text: "[css] 置中方法", link: "/f2e/css/center" },
-            { text: "[html] 使用雜記", link: "/f2e/css/html" },
 
             { text: "[flex] 預設與溢出問題", link: "/f2e/css/flex" },
             { text: "[flex] 均分與bootstrap格線系統", link: "/f2e/css/flex_row" },
@@ -75,6 +80,8 @@ export default defineConfig({
             { text: "composition 用法", link: "/vue/vue3/composition" },
             { text: "應用情境筆記 ", link: "/vue/vue3/context" },
             { text: "邏輯復用筆記 ", link: "/vue/vue3/reuse" },
+            { text: "[nuxt 3] 建立專案筆記", link: "/vue/vue3/nuxt3_project" },
+            { text: "[nuxt 3] 學習筆記 ", link: "/vue/vue3/nuxt3_use" },
           ],
         },
         {
