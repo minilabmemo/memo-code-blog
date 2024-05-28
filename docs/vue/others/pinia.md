@@ -61,8 +61,7 @@ export const useCounterStore = defineStore("counter", {
 
 ### 使用
 
-- [core-concepts/#Using-the-store](https://pinia.vuejs.org/core-concepts/#Using-the-store)
-  使用上有跟 option API 跟 composition 的用法，後者修改用法比較多，先以後者為範例。
+- [core-concepts/#Using-the-store](https://pinia.vuejs.org/core-concepts/#Using-the-store) 使用上有跟 option API 跟 composition 的用法，後者修改用法比較多，先以後者為範例。
   - 抓取到資料後，可以直接改值，store 資料會改變。
   - 可以用解構+storeToRefs 後用 value 改值。
   - 方法可以直接解構出來
@@ -231,6 +230,27 @@ watch(
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 );
+```
+
+### computed 寫法
+
+- counter.ts
+
+```
+import { ref, computed } from 'vue'
+import { defineStore } from 'pinia'
+
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+  const doubleCount = computed(() => count.value * 2)
+  function increment() {
+    count.value++
+  }
+
+  return { count, doubleCount, increment }
+})
+
+
 ```
 
 ## TODO

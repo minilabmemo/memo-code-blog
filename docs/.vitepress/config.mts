@@ -31,6 +31,7 @@ export default defineConfig({
           items: [
             { text: "oop 物件導向", link: "/f2e/js/oop" },
             { text: "[event loop] setTimeout", link: "/f2e/js/event_loop" },
+            { text: "[typescript] 基礎筆記", link: "/f2e/js/js_to_ts" },
           ],
         },
         {
@@ -58,7 +59,7 @@ export default defineConfig({
           items: [
             { text: "[E2E test] cypress使用筆記", link: "/f2e/test/cypress" },
             { text: "[eslint] 利用eslint檢驗程式碼品質與修正", link: "/f2e/test/eslint" },
-            { text: "[design pattern] 設計模式", link: "/f2e/others/design_pattern" },
+            { text: "[design pattern] 設計模式", link: "/f2e/test/code_design_pattern" },
           ],
         },
         {
@@ -66,7 +67,8 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: "[design] 設計靈感/素材網站", link: "/f2e/others/design_inspire" },
-            { text: "[design/devTool] 設計與開發工具", link: "/f2e/others/design_tools" },
+            { text: "[design/dev] 設計/開發補助工具", link: "/f2e/others/design_tools" },
+            { text: "[動畫] lottie 筆記", link: "/f2e/others/lottie" },
           ],
         },
       ],
@@ -77,11 +79,16 @@ export default defineConfig({
             { text: "基礎與概念", link: "/vue/vue3/learn" },
             { text: "vue 指令", link: "/vue/vue3/v-directives" },
             { text: "[vite] 專案", link: "/vue/vue3/vite" },
-            { text: "composition 用法", link: "/vue/vue3/composition" },
+            { text: "[composition] 用法", link: "/vue/vue3/composition" },
+            { text: "[composition] ts 用法", link: "/vue/vue3/composition_ts" },
+            { text: "globalProperties 用法", link: "/vue/vue3/global_ts" },
+
             { text: "應用情境筆記 ", link: "/vue/vue3/context" },
             { text: "邏輯復用筆記 ", link: "/vue/vue3/reuse" },
+            { text: "[vue] 格式化", link: "/vue/vue3/style_guide" },
             { text: "[nuxt 3] 建立專案筆記", link: "/vue/vue3/nuxt3_project" },
             { text: "[nuxt 3] 學習筆記 ", link: "/vue/vue3/nuxt3_use" },
+            { text: "[nuxt 3] 部署筆記 ", link: "/vue/vue3/nuxt3_deploy" },
           ],
         },
         {

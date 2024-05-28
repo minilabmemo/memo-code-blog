@@ -533,8 +533,30 @@ const refreshAll = async () => {
 
 ```
 
+- Refresh Specific Data 僅刷新 key 值一致的資料。
+
+```ts
+<script setup lang="ts">
+const { pending, data: count } = await useLazyAsyncData('count', () => $fetch('/api/count'))
+const refresh = () => refreshNuxtData('count')
+</script>
+
+<template>
+  <div>
+    {{ pending ? 'Loading' : count }}
+  </div>
+  <button @click="refresh">Refresh</button>
+</template>
+
+
+```
+
 ## 參考
 
 - [Nuxt 3 學習筆記](https://ithelp.ithome.com.tw/users/20152617/ironman/5934)
 - [深入淺出，完整認識 Next.js 13|該怎麼知道網站是 CSR 還是 Pre-Rendering 呢？](https://ithelp.ithome.com.tw/articles/10314924)
 - [Nuxt 3 實戰筆記｜[Day 09] Nuxt 3 發送 API 請求資料 - 從 $fetch 與 useAsyncData 到 useFetch](https://ithelp.ithome.com.tw/articles/10326675?sc=rss.iron)
+
+## 其他筆記
+
+- [nuxt 觀念釐清 feat GPT](https://hackmd.io/7ZqvLiclSmu5UAx4RKFnTQ)

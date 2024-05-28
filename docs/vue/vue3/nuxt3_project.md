@@ -6,11 +6,96 @@ outline: deep
 
 ## 專案建立
 
+- `npx nuxi init your-nuxt-app-name`
+
+```
+npx nuxi init nuxt-app
+
+$ npx nuxi init xx
+
+✔ Which package manager would you like to use?
+npm
+◐ Installing dependencies...                                                                                                                             上午10:00:36
+
+> postinstall
+> nuxt prepare
+
+✔ Types generated in .nuxt                                                                                                                              上午10:02:20
+
+added 848 packages, and audited 850 packages in 2m
+
+166 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+✔ Installation completed.                                                                                                                               上午10:02:20
+
+❯ Initialize git repository?
+● Yes / ○ No
+ℹ Initializing git repository...                                                                                                                        上午10:02:58
+
+Initialized empty Git repository in /Users/xxx/dev/front/vue/xxx/.git/
+                                                                                                                                                         上午10:02:58
+✨ Nuxt project has been created with the v3 template. Next steps:
+ › cd xxx                                                                                                                                         上午10:02:58
+ › Start development server with npm run dev
+```
+
+- 預設會使用 v3 template 建立，這邊似乎是 starter 其他選項但不多 [nuxt/starter](https://github.com/nuxt/starter)
+- 已經建好 UI 的範本 [nuxt|templates](https://nuxt.com/templates)
+
+  - 有 docs/Landing/dashboard/電商 WooNuxt/blog 等範本，有一些免費一些付費。
+
 - 啟動專案
 
 ```
 nuxt dev
 Nuxt 3.11.2 with Nitro 2.9.6
+```
+
+## 打包
+
+```
+> nuxt build
+
+Nuxt 3.11.2 with Nitro 2.9.6n下午12:48:50
+ℹ Using default Tailwind CSS file nuxt:tailwindcss 下午12:48:51
+ℹ Building client... 下午12:48:53
+ℹ vite v5.2.8 building for production... 下午12:48:53
+ℹ ✓ 181 modules transformed.
+ℹ ✓ built in 3.29s 下午12:48:57
+✔ Client built in 3312ms 下午12:48:57
+ℹ Building server... 下午12:48:57
+ℹ vite v5.2.8 building SSR bundle for production... 下午12:48:57
+ℹ ✓ 121 modules transformed.
+ℹ ✓ built in 2.42s 下午12:48:59
+✔ Server built in 2430ms 下午12:48:59
+✔ Generated public .output/public nitro 下午12:48:59
+ℹ Building Nuxt Nitro server (preset: node-server) nitro 下午12:48:59
+✔ Nuxt Nitro server built
+Σ Total size: 3.63 MB (1.07 MB gzip)
+✔ You can preview this build using node .output/server/index.mjs
+
+> nuxt preview
+
+ 下午12:51:37
+ ╭────────────────────────────────────────Preview Mode──────────────────────────────────────────╮
+ │ │
+ │  You are running Nuxt production build in preview mode. │
+ │  For production deployments, please directly use node ./server/index.mjs command. │
+ │ │
+ │  Node.js:           v18.16.1 │
+ │  Nitro Preset:      node-server │
+ │  Working directory: .output │
+ │ │
+ ╰──────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ℹ Loading .env. This will not be loaded when running the server in production.                                                                                        下午12:51:37
+ℹ Starting preview command: node ./server/index.mjs 下午12:51:37
+ 下午12:51:37
+Listening on http://[::]:3000
+New request: http://localhost:3000/blog/
+New request: http://localhost:3000/blog/
 ```
 
 ## 專案設定
@@ -68,12 +153,12 @@ export default defineNuxtConfig({
   - 更多說明 [nuxtjs | tailwindcss](https://tailwindcss.nuxtjs.org/getting-started/installation)
 
 - 起動成功後會出現，甚至還有 UI 可以看
+
 ```
 ℹ Using default Tailwind CSS    nuxt:tailwindcss 上午9:58:32
 
 ℹ Tailwind Viewer: http://localhost:3000/_tailwind/ nuxt:tailwindcss 上午9:58:33
 ```
-
 
 ## vscode plugin
 

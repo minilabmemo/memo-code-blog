@@ -10,8 +10,8 @@ title: composition 組合式 API
 - [为什么要有组合式 API？](https://cn.vuejs.org/guide/extras/composition-api-faq)
 
 ::: details
-![img](https://user-images.githubusercontent.com/499550/62783026-810e6180-ba89-11e9-8774-e7771c8095d6.png)
 
+![img](https://user-images.githubusercontent.com/499550/62783026-810e6180-ba89-11e9-8774-e7771c8095d6.png)
 :::
 
 ## Proxy
@@ -449,7 +449,7 @@ const app = createApp({
 
 ```
 
-## Provider 與 Inject [跨層級 props]
+## Provider 與 Inject [父子跨層級 props]
 
 - 預設不會有雙向綁定，內層採用 v-model 並不會互動。
 - 如果要互動的話就改用 ref(person...) 來定義
