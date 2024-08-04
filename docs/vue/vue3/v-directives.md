@@ -151,6 +151,19 @@ styleObjectB: {boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.16)'}, -->
   - [表单输入绑定](https://cn.vuejs.org/guide/essentials/forms.html)
   - 组件事件 - 配合 v-model 使用
 
+## defineModel
+https://cn.vuejs.org/api/sfc-script-setup.html#definemodel
+
+```
+<div>test <RestModal v-model:isOpen="modeStore.timerEnd"></RestModal></div>
+<script setup lang="ts">
+const isOpen = defineModel('isOpen', { type: Boolean, default: false });
+</script>
+
+
+```
+
+
 ## v-on 事件監聽 縮寫＠
 
 - 參考 [v-on](https://cn.vuejs.org/api/built-in-directives#v-on)

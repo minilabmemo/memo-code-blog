@@ -21,3 +21,15 @@ export type Params {
 }
 
 ```
+
+## 枚舉字串
+
+```
+export enum ClockMode {
+  Rest = 'rest',
+  Work = 'work',
+}
+ const clockModeStr = computed<ClockMode>(() => {
+      return runningMode.value ? ClockMode.Rest : ClockMode.Work;
+    });
+```

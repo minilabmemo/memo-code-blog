@@ -69,6 +69,8 @@ export default defineConfig({
             { text: "[design] 設計靈感/素材網站", link: "/f2e/others/design_inspire" },
             { text: "[design/dev] 設計/開發補助工具", link: "/f2e/others/design_tools" },
             { text: "[動畫] lottie 筆記", link: "/f2e/others/lottie" },
+            { text: "[Node] 版本與管理", link: "/f2e/others/node_nvm" },
+            { text: "[SEO] 網址與檔案命名筆記", link: "/f2e/others/seo" },
           ],
         },
       ],
@@ -89,6 +91,9 @@ export default defineConfig({
             { text: "[nuxt 3] 建立專案筆記", link: "/vue/vue3/nuxt3_project" },
             { text: "[nuxt 3] 學習筆記 ", link: "/vue/vue3/nuxt3_use" },
             { text: "[nuxt 3] 部署筆記 ", link: "/vue/vue3/nuxt3_deploy" },
+            { text: "[nuxt 3] eslint筆記 ", link: "/vue/vue3/nuxt3_eslint" },
+            { text: "[nuxt 3] assets筆記 ", link: "/vue/vue3/nuxt3_assets" },
+            { text: "[v-html]過濾檢查", link: "/vue/vue3/vue_html" },
           ],
         },
         {
@@ -108,6 +113,10 @@ export default defineConfig({
         {
           text: "tech",
           items: [{ text: "[vscode]使用筆記", link: "/tech/vscode" }],
+        },
+        {
+          text: "python",
+          items: [{ text: "[python]使用筆記", link: "/tech/python/start" }],
         },
       ],
     },

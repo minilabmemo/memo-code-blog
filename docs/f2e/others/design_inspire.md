@@ -24,7 +24,9 @@
   > 品喔！
   - 有一些做好的可愛網站 ex [THE CONTINENTAL SHOPPE](https://www.awwwards.com/sites/the-continental-shoppe#creator)，內容會有元素設計與連結網站。
 - [css design awards](https://www.cssdesignawards.com/) 會連結到一些網站具有設計感
-- [land book](https://land-book.com/) 有很多網頁參考，不過搜尋不太到，內容會有一些顏色設定。
+- [land book](https://land-book.com/) 
+  - 有很多網頁參考與元件的範本，內容會有一些顏色設定。
+  - 不過搜尋都搜不太到關鍵？
 
 ---
 
@@ -35,12 +37,18 @@ iconscout 是一個有著 icon、Lottie 動畫、插畫以及 3D 插畫資源分
 
 ## 偏樣式庫（含程式碼）
 
+- [uiverse](https://uiverse.io/)
+  - 很多特效樣式的元件按鈕，可搜尋，內含 html/css 程式碼，甚至還有 figma copy。
 - [aceternity UI](https://ui.aceternity.com/components)
   - 有很多組件的特殊效果可以參考，程式碼適用 React
 - [shadcn-vue ](https://www.shadcn-vue.com/)
-  - vue 的元件庫，與 bootstrap 很像，但是是組建型態。
+  - vue 的元件庫，與 bootstrap 很像，但是是組建型態，要安裝。
   - Tailwind 的模式。
 - [daisyui](https://daisyui.com/)
-  - 一般常見元件，使用 Tailwind 的模式。
+  - 一般常見元件，使用 Tailwind 的模式，但要安裝。
 - [HyperUI](https://www.hyperui.dev/) is a collection of free copy-pastable Tailwind CSS components that has been around since 2021.
-  - 一般常見元件，但樣式較多一點。
+  - 一般常見元件，但樣式較多一點，有 vue 版本可以直接 copy 使用。
+
+
+## 效果收集筆記
+- [awesome 效果收藏](https://www.notion.so/awesome-99cbe971e8644c26816522d3ddd141d8)

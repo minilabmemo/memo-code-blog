@@ -22,7 +22,7 @@ outline: deep
 - 使用 `npm install -g wrangler` 安裝 wrangler
 - 登入 `wrangler login` 會開啟網頁需授權登入
 - 新增 wrangler.tomlwrangler.toml 記得建立設定檔案要在根目錄下且不要多打空白，否則下指令時會抓不到入口 main 等正確設定。
-
+  - 這邊的 name 會與部署後網址前綴一致
 ```
 name = "你的專案名稱"
 main = "./.output/server/index.mjs"
@@ -66,6 +66,7 @@ $ npx wrangler dev .output/server/index.mjs --site .output/public
 
 - `.wrangler` 資料夾會產生一堆內容 `.gitignore` 記得加入
 - 上傳 `npx wrangler deploy`
+第一次會問你要不要設置 subdomain，之後可以在網頁上修改，網頁會檢查是否為可用命名。
 ```
  npm run deploy:wrangler 
 > deploy:wrangler

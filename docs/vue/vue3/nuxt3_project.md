@@ -102,7 +102,89 @@ New request: http://localhost:3000/blog/
 
 ### TypeScript + ESLint + Prettier 環境建置
 
-- [ ] 等待紀錄
+
+### TypeScript
+ 安裝流程參考：[nuxt|TypeScript](https://nuxt.com/docs/guide/concepts/typescript)
+- 安裝兩個 vue-tsc 與 typescript `npm install --save-dev vue-tsc@^1 typescript`
+- 執行命令來檢查您的類型：npx nuxi typecheck (但我試是沒有用？？但下面有用)
+-  設置 nuxt.config.ts  開發時檢查
+```
+export default defineNuxtConfig({
+  typescript: {
+    typeCheck: true
+  }
+})
+```
+- 重開後打 `const num:number:"22"` 就發現 `IDE 出現紅底加問題`了。
+
+
+###  ESLint
+- 安裝 npm install -D eslint @nuxtjs/eslint-config-typescript
+- 設置 .eslintrc.cjs
+```
+module.exports = {
+  env: {
+    browser: true,
+    es2023: true
+  },
+  extends: ['@nuxtjs/eslint-config-typescript'],
+  parserOptions: {
+    ecmaVersion: 2023,
+    sourceType: 'module'
+  },
+  rules: {
+    'no-undef': 'off'
+  }
+}
+
+```
+- 重開後新增一個沒被使用過的變數，會發現會出現`'xx' is assigned a value but never used.(@typescript-eslint/no-unused-vars)`，點選快速修復可以查看建議
+
+- eslint 檢查的幾種方法
+  1. npx eslint -- app.vue
+  1. 設置 package.json "lint": "eslint --ext .ts,.js,.vue ."
+  1. ESLint 插件安裝
+- 設定裡面有一個 Eslint › Code Actions On Save: Mode：All，可以自動修復程式碼
+- 這邊安裝完可能會有一些格式的修復建議，例如每一行結尾如果多出分號;會提醒移除，下一個 Prettier 你可以設定規則。
+
+
+### Prettier
+- 安裝 `npm install -D prettier eslint-config-prettier eslint-plugin-prettier
+- 建立 .prettierrc.cjs 檔案
+```
+module.exports = {
+  printWidth: 150,          
+  semi: true,             
+  tabWidth: 2,
+  singleQuote: true,        // 字串使用單引號，而不是雙引號
+  trailingComma: 'none'     // 如 Object、Array 內的元素不需要尾隨逗號
+}
+```
+- 修正.eslintrc.cjs 設定檔，讓 Prettier 與 ESLint 有更好的搭配
+```
+module.exports = {
+  env: {
+    browser: true,
+    es2023: true
+  },
+  extends: ['@nuxtjs/eslint-config-typescript', 'prettier'],
+  parserOptions: {
+    ecmaVersion: 2023,
+    sourceType: 'module'
+  },
+  plugins: ['prettier'],
+  rules: {
+    'no-undef': 'off',
+    'prettier/prettier': 'error'
+  }
+}
+```
+
+
+- 安裝 Prettier - Code formatter 插件
+
+
+
 
 #### Prettier & vue 的格式化衝突
 
@@ -209,3 +291,8 @@ export default defineNuxtConfig({
 - 接著打開 fullstack: nux 就會進入到 debug 模式，中斷點記得要存擋才能設定。
 - 控制台出現 ✨ Nuxt DevTools Press Shift + Option + D to open DevTools
   - 跟著按就會開啟 Nuxt DevTools，裏面可以看到 router 設定，server api,app config 等等設定
+
+
+
+## 參考文件
+- [Nuxt3 學習筆記|[Day 04] Nuxt 3 + TypeScript + ESLint + Prettier 環境建置](https://ithelp.ithome.com.tw/articles/10293758)

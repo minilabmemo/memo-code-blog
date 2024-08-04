@@ -2,7 +2,7 @@
 
 > 製作動畫的渲染庫，duo lingo 似乎也是用這個做的。
 
-## 介紹
+## 介紹參考
 
 - [什么是 Lottie](https://zhuxinyu-znb.github.io/blog/2020-06-08-lottie.html)
   - Lottie 是 Airbnb 开源的一个动画渲染库，导出的 json 文件，并在 Android/iOS、React Native 和 web 端实现相同的动画效果。
@@ -30,8 +30,40 @@
 
 ## 應用
 
-- [vue 中引入 json 动画](https://juejin.cn/post/7142706695611875358)
-
+- [youtube|犬哥教學]
+  - 講了 WordPress 的嵌入方式，啟動方式可以選 hover 才觸發，最後有滾動的方式？不太明瞭是否可以隨滑鼠滾的設定
   > 我们经常会碰到复杂的动画，运用纯 css3 制作动画效果不理想，因为图片太多，canvas 动画比较复杂，而且会失真，所以想起运用 json 文件进行动画
 
-- [ ] 待實作
+- [vue 或者 nuxt 项目中使用 lottie 动画](https://blog.csdn.net/weixin_46328739/article/details/134072901)
+  - vue-lottie 這似乎是依賴 vue2
+- [vue 中引入 json 动画](https://juejin.cn/post/7142706695611875358)
+  - lottie-web 看不太懂
+- [vue3-lottie](https://github.com/megasanjay/vue3-lottie) lottie 官網連到的網站
+  - 範例很清楚還有 Nuxt 3 引入方式，及[demo](https://vue3-lottie.vercel.app/)
+
+  - 安裝 npm install vue3-lottie@latest --save
+
+### Nuxt 3
+
+- 新增 Vue3Lottie.client.ts 
+不知道為什麼官網提供的 component 不能用，問 GPT 改用 use 的 0.0
+```
+import { defineNuxtPlugin } from '#app';
+import Vue3Lottie from 'vue3-lottie';
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(Vue3Lottie);
+});
+
+
+```
+
+- 引用方法 成功！！！
+仍須注意環境引用資源是否正常。
+```
+import json from '@/assets/celebration.json';
+ <Vue3Lottie animation-link="https://assets2.lottiefiles.com/packages/lf20_GbabwrUY2k.json" :height="200" :width="200" />
+ <Vue3Lottie :animation-data="json" :height="200" />
+
+
+```

@@ -10,6 +10,13 @@
 - 有多種可以選擇，還可以選替換文字還是背景
 - 可以選是否找相近的顏色，但有可能沒有結果
 
+
+
+## [Font-size Clamp Generator](https://clamp.font-size.app/?config=eyJyb290IjoiMTYiLCJtaW5XaWR0aCI6IjMyMHB4IiwibWF4V2lkdGgiOiIxOTIwcHgiLCJtaW5Gb250U2l6ZSI6IjE2cHgiLCJtYXhGb250U2l6ZSI6IjI2cHgifQ%3D%3D)
+
+- 計算出字體尺寸用的 Clamp
+
+
 ## [accessible-color-palette-generator](https://venngage.com/tools/accessible-color-palette-generator)
 
 - 隨機產生對比度正確顏色，不過首頁字體顏色只有黑白
