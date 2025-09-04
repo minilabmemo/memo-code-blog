@@ -40,16 +40,25 @@ export default defineConfig({
           items: [
             { text: "[html] 使用雜記", link: "/f2e/css/html" },
             { text: "[css] 樣式雜記", link: "/f2e/css/css_note" },
-            { text: "[css] 我說那個 width 怎麼跟我想的不一樣", link: "/f2e/css/width" },
+            {
+              text: "[css] 我說那個 width 怎麼跟我想的不一樣",
+              link: "/f2e/css/width",
+            },
             { text: "[css] 區塊與行內元素", link: "/f2e/css/inline_block" },
             { text: "[css] 置中方法", link: "/f2e/css/center" },
 
             { text: "[flex] 預設與溢出問題", link: "/f2e/css/flex" },
-            { text: "[flex] 均分與bootstrap格線系統", link: "/f2e/css/flex_row" },
+            {
+              text: "[flex] 均分與bootstrap格線系統",
+              link: "/f2e/css/flex_row",
+            },
             { text: "[flex] 對齊與自動邊界", link: "/f2e/css/flex_margin" },
             { text: "[grid] 格線系統", link: "/f2e/css/grid" },
             { text: "[bootstrap] 應用 + vue", link: "/f2e/css/bootstrap" },
-            { text: "[flex+bootstrap] 卡片對齊", link: "/f2e/css/flex_bs_items" },
+            {
+              text: "[flex+bootstrap] 卡片對齊",
+              link: "/f2e/css/flex_bs_items",
+            },
             { text: "[Rwd] 注意事項", link: "/f2e/css/rwd" },
           ],
         },
@@ -58,16 +67,32 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: "[E2E test] cypress使用筆記", link: "/f2e/test/cypress" },
-            { text: "[eslint] 利用eslint檢驗程式碼品質與修正", link: "/f2e/test/eslint" },
-            { text: "[design pattern] 設計模式", link: "/f2e/test/code_design_pattern" },
+            {
+              text: "[eslint] 利用eslint檢驗程式碼品質與修正",
+              link: "/f2e/test/eslint",
+            },
+            {
+              text: "[design pattern] 設計模式",
+              link: "/f2e/test/code_design_pattern",
+            },
+            {
+              text: "[電商網站] code review重點說明",
+              link: "/f2e/test/code_review.md",
+            },
           ],
         },
         {
           text: "其他",
           collapsed: false,
           items: [
-            { text: "[design] 設計靈感/素材網站", link: "/f2e/others/design_inspire" },
-            { text: "[design/dev] 設計/開發補助工具", link: "/f2e/others/design_tools" },
+            {
+              text: "[design] 設計靈感/素材網站",
+              link: "/f2e/others/design_inspire",
+            },
+            {
+              text: "[design/dev] 設計/開發補助工具",
+              link: "/f2e/others/design_tools",
+            },
             { text: "[動畫] lottie 筆記", link: "/f2e/others/lottie" },
             { text: "[Node] 版本與管理", link: "/f2e/others/node_nvm" },
             { text: "[SEO] 網址與檔案命名筆記", link: "/f2e/others/seo" },
@@ -99,9 +124,18 @@ export default defineConfig({
         {
           text: "vitepress",
           items: [
-            { text: "[vitepress]使用筆記", link: "/vue/vitepress/vitepress_note" },
-            { text: "(備) Markdown Examples", link: "/vue/vitepress/markdown-examples" },
-            { text: "(備) Runtime API Examples", link: "/vue/vitepress/api-examples" },
+            {
+              text: "[vitepress]使用筆記",
+              link: "/vue/vitepress/vitepress_note",
+            },
+            {
+              text: "(備) Markdown Examples",
+              link: "/vue/vitepress/markdown-examples",
+            },
+            {
+              text: "(備) Runtime API Examples",
+              link: "/vue/vitepress/api-examples",
+            },
           ],
         },
         {
