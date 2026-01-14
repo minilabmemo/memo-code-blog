@@ -17,10 +17,7 @@ export default defineConfig({
       { text: "Vue", link: "/vue/" },
       {
         text: "隨手記",
-        items: [
-          { text: "Vitepress", link: "/vue/vitepress/vitepress_note" },
-          { text: "技術相關", link: "/tech/" },
-        ],
+        items: [{ text: "技術相關", link: "/tech/" }],
       },
     ],
 
@@ -28,7 +25,7 @@ export default defineConfig({
       {
         documentRootPath: "docs",
         scanStartPath: "f2e",
-        resolvePath: "/",
+        resolvePath: "/f2e/",
         useTitleFromFileHeading: true,
         collapsed: false,
         excludeFiles: ["index.md"],

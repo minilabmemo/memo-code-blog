@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-## flex 卡片排列問題
+# flex 卡片排列問題
 
 ### 高度的對齊問題
 

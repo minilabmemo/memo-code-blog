@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-## 設計模式
+# 設計模式
 
 ### 單例模式 (Singleton)
 
