@@ -2,9 +2,9 @@
 outline: deep
 ---
 
-# Nuxt 3
+# Nuxt 3 專案建立
 
-## 專案建立
+## 建立專案
 
 - `npx nuxi init your-nuxt-app-name`
 

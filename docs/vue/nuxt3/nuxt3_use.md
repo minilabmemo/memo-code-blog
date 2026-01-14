@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# Nuxt 3
+# Nuxt 3 目錄與專案結構
 
 ## 目錄與專案結構
 

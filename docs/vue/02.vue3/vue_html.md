@@ -1,3 +1,8 @@
+---
+outline: deep
+---
+
+# [v-html] XSS 防護與 DOMPurify
 
 ## 參考資料
 https://www.npmjs.com/package/eslint-plugin-risxss

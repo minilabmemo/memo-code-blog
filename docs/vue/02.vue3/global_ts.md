@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# vue3 globalProperties [ts version]
+# globalProperties [ts version]
 ## globalProperties 全局方法
 
 http://zhongyi.qdxiaochuan.com/?id=645
