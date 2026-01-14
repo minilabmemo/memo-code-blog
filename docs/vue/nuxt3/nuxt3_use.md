@@ -112,7 +112,7 @@ const show = ref(false);
 ```
 
 - 打開開發者模式-> 網路-> JS -> 可以看到 AppWelcome.vue 載入時間點。
-  - ![image](./lazy_loading.jpg)
+  - ![image](./lazy_loading.png)
 
 ### ClientOnly 元件 + fallback 插槽 (Slot)
 
