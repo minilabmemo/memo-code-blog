@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { generateSidebar } from "vitepress-sidebar";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -23,137 +24,44 @@ export default defineConfig({
       },
     ],
 
-    sidebar: {
-      "/": [
-        {
-          text: "javascript",
-          collapsed: false,
-          items: [
-            { text: "oop 物件導向", link: "/f2e/js/oop" },
-            { text: "[event loop] setTimeout", link: "/f2e/js/event_loop" },
-            { text: "[typescript] 基礎筆記", link: "/f2e/js/js_to_ts" },
-          ],
-        },
-        {
-          text: "css/html",
-          collapsed: false,
-          items: [
-            { text: "[html] 使用雜記", link: "/f2e/css/html" },
-            { text: "[css] 樣式雜記", link: "/f2e/css/css_note" },
-            {
-              text: "[css] 我說那個 width 怎麼跟我想的不一樣",
-              link: "/f2e/css/width",
-            },
-            { text: "[css] 區塊與行內元素", link: "/f2e/css/inline_block" },
-            { text: "[css] 置中方法", link: "/f2e/css/center" },
-
-            { text: "[flex] 預設與溢出問題", link: "/f2e/css/flex" },
-            {
-              text: "[flex] 均分與bootstrap格線系統",
-              link: "/f2e/css/flex_row",
-            },
-            { text: "[flex] 對齊與自動邊界", link: "/f2e/css/flex_margin" },
-            { text: "[grid] 格線系統", link: "/f2e/css/grid" },
-            { text: "[bootstrap] 應用 + vue", link: "/f2e/css/bootstrap" },
-            {
-              text: "[flex+bootstrap] 卡片對齊",
-              link: "/f2e/css/flex_bs_items",
-            },
-            { text: "[Rwd] 注意事項", link: "/f2e/css/rwd" },
-          ],
-        },
-        {
-          text: "Test / QA",
-          collapsed: false,
-          items: [
-            { text: "[E2E test] cypress使用筆記", link: "/f2e/test/cypress" },
-            {
-              text: "[eslint] 利用eslint檢驗程式碼品質與修正",
-              link: "/f2e/test/eslint",
-            },
-            {
-              text: "[design pattern] 設計模式",
-              link: "/f2e/test/code_design_pattern",
-            },
-            {
-              text: "[電商網站] code review重點說明",
-              link: "/f2e/test/code_review.md",
-            },
-          ],
-        },
-        {
-          text: "其他",
-          collapsed: false,
-          items: [
-            {
-              text: "[design] 設計靈感/素材網站",
-              link: "/f2e/others/design_inspire",
-            },
-            {
-              text: "[design/dev] 設計/開發補助工具",
-              link: "/f2e/others/design_tools",
-            },
-            { text: "[動畫] lottie 筆記", link: "/f2e/others/lottie" },
-            { text: "[Node] 版本與管理", link: "/f2e/others/node_nvm" },
-            { text: "[SEO] 網址與檔案命名筆記", link: "/f2e/others/seo" },
-          ],
-        },
-      ],
-      "/vue/": [
-        {
-          text: "Vue3",
-          items: [
-            { text: "基礎與概念", link: "/vue/vue3/learn" },
-            { text: "vue 指令", link: "/vue/vue3/v-directives" },
-            { text: "[vite] 專案", link: "/vue/vue3/vite" },
-            { text: "[composition] 用法", link: "/vue/vue3/composition" },
-            { text: "[composition] ts 用法", link: "/vue/vue3/composition_ts" },
-            { text: "globalProperties 用法", link: "/vue/vue3/global_ts" },
-
-            { text: "應用情境筆記 ", link: "/vue/vue3/context" },
-            { text: "邏輯復用筆記 ", link: "/vue/vue3/reuse" },
-            { text: "[vue] 格式化", link: "/vue/vue3/style_guide" },
-            { text: "[nuxt 3] 建立專案筆記", link: "/vue/vue3/nuxt3_project" },
-            { text: "[nuxt 3] 學習筆記 ", link: "/vue/vue3/nuxt3_use" },
-            { text: "[nuxt 3] 部署筆記 ", link: "/vue/vue3/nuxt3_deploy" },
-            { text: "[nuxt 3] eslint筆記 ", link: "/vue/vue3/nuxt3_eslint" },
-            { text: "[nuxt 3] assets筆記 ", link: "/vue/vue3/nuxt3_assets" },
-            { text: "[v-html]過濾檢查", link: "/vue/vue3/vue_html" },
-          ],
-        },
-        {
-          text: "vitepress",
-          items: [
-            {
-              text: "[vitepress]使用筆記",
-              link: "/vue/vitepress/vitepress_note",
-            },
-            {
-              text: "(備) Markdown Examples",
-              link: "/vue/vitepress/markdown-examples",
-            },
-            {
-              text: "(備) Runtime API Examples",
-              link: "/vue/vitepress/api-examples",
-            },
-          ],
-        },
-        {
-          text: "其他",
-          items: [{ text: "pinia 跨元件狀態溝通", link: "/vue/others/pinia" }],
-        },
-      ],
-      "/tech/": [
-        {
-          text: "tech",
-          items: [{ text: "[vscode]使用筆記", link: "/tech/vscode" }],
-        },
-        {
-          text: "python",
-          items: [{ text: "[python]使用筆記", link: "/tech/python/start" }],
-        },
-      ],
-    },
+    sidebar: generateSidebar([
+      {
+        documentRootPath: "docs",
+        scanStartPath: "f2e",
+        resolvePath: "/",
+        useTitleFromFileHeading: true,
+        collapsed: false,
+        excludeFiles: ["index.md"],
+        excludeFilesByFrontmatterFieldName: "draft",
+        sortMenusByFrontmatterOrder: true,
+        removePrefixAfterOrdering: true,
+        prefixSeparator: ".",
+      },
+      {
+        documentRootPath: "docs",
+        scanStartPath: "vue",
+        resolvePath: "/vue/",
+        useTitleFromFileHeading: true,
+        collapsed: false,
+        excludeFiles: ["index.md"],
+        excludeFilesByFrontmatterFieldName: "draft",
+        sortMenusByFrontmatterOrder: true,
+        removePrefixAfterOrdering: true,
+        prefixSeparator: ".",
+      },
+      {
+        documentRootPath: "docs",
+        scanStartPath: "tech",
+        resolvePath: "/tech/",
+        useTitleFromFileHeading: true,
+        collapsed: false,
+        excludeFiles: ["index.md"],
+        excludeFilesByFrontmatterFieldName: "draft",
+        sortMenusByFrontmatterOrder: true,
+        removePrefixAfterOrdering: true,
+        prefixSeparator: ".",
+      },
+    ]),
     socialLinks: [{ icon: "github", link: "https://github.com/minilabmemo" }],
     footer: {
       message: "",
